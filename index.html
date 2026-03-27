@@ -1,163 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="google-site-verification" content="wyPJCq7rLL8e9uipEopt-ItztYq84U0DS2bgwVMjCx8" />
-    <title>Lyzonix</title>
-    <style>
-        body {
-            margin: 0;
-                font-family: Arial, sans-serif;
-                    background: linear-gradient(to right, #6a11cb, #2575fc);
-                        color: white;
-                            text-align: center;
-                            }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyzonix</title>
 
-                            /* Navbar */
-                            .navbar {
-                                background: rgba(0,0,0,0.6);
-                                    padding: 15px;
-                                        font-size: 20px;
-                                        }
+<style>
+/* 🌈 BACKGROUND ANIMATION */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background: linear-gradient(-45deg, #ffafcc, #a2d2ff, #ffc8dd, #bde0fe);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
 
-                                        /* Section styling */
-                                        .section {
-                                            padding: 50px 20px;
-                                            }
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 
-                                            /* Card design */
-                                            .card {
-                                                background: white;
-                                                    color: black;
-                                                        margin: 20px;
-                                                            padding: 20px;
-                                                                border-radius: 15px;
-                                                                    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-                                                                    }
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
 
-                                                                    /* Button */
-                                                                    button {
-                                                                        padding: 10px 20px;
-                                                                            border: none;
-                                                                                background: #ff4b2b;
-                                                                                    color: white;
-                                                                                        border-radius: 10px;
-                                                                                            cursor: pointer;
-                                                                                            }
+header h1 {
+    color: #fff;
+}
 
-                                                                                            button:hover {
-                                                                                                background: #ff416c;
-                                                                                                }
+nav a {
+    color: white;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-                                                                                                /* Smooth scroll */
-                                                                                                html {
-                                                                                                    scroll-behavior: smooth;
-                                                                                                    }
-                                                                                                    </style>
-        <link rel="stylesheet" href="style.css">
-        </head>
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+}
 
-        <body>
-            <h1>About Lyzonix</h1>
+.hero h2 {
+    font-size: 55px;
+    margin: 0;
+}
 
-            <p><b>Lyzonix</b> is a modern digital innovation company focused on building creative, smart, and user-friendly digital experiences.</p>
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
 
-            <p>We aim to connect people through technology by designing platforms that are simple, powerful, and engaging.</p>
+.btn {
+    padding: 12px 25px;
+    border: none;
+    background: #fff;
+    color: black;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+}
 
-            <h2>What We Do</h2>
+/* SECTIONS */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
 
-            <ul>
-              <li>Creative Website Design & Development</li>
-                <li>Social Networking Platforms</li>
-                  <li>Mobile Application Development</li>
-                    <li>Innovative UI/UX Design</li>
-                      <li>Future-ready Digital Solutions</li>
-                      </ul>
+.card {
+    background: rgba(0,0,0,0.25);
+    padding: 20px;
+    margin: 10px;
+    display: inline-block;
+    width: 200px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
 
-                      <h2>Our Vision</h2>
-                      <p>To build a digital ecosystem where creativity meets technology.</p>
+.card:hover {
+    transform: scale(1.1);
+}
 
-                      <h2>Our Mission</h2>
-                      <p>To create high-quality digital products that improve connectivity and bring innovative ideas to life.</p>
+/* SLIDER */
+.slider {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+}
 
-            <!-- NAVBAR -->
-                <div class="navbar">
-                        <h2>Lyzonix</h2>
-                                <ul>
-                                            <li>Home</li>
-                                                        <li>About</li>
-                                                                    <li>Services</li>
-                                                                                <li>Contact</li>
-                                                                                        </ul>
-                                                                                            </div>
+.slides {
+    display: flex;
+    width: 300%;
+    animation: slide 8s infinite;
+}
 
-                                                                                                <!-- HERO -->
-                                                                                                    <div class="hero">
-                                                                                                            <h1>Welcome to Lyzonix</h1>
-                                                                                                        
-                                                                                                                            <button>Get Started</button>
-                                                                                                                                </div>
+.slides img {
+    width: 100%;
+}
 
-                                                                                                                                    <!-- ABOUT -->
-                                                                                                                                        <div class="about">
-                                                                                                                                                <h2>About Us</h2>
-                                                                                                                                                        <p>This is my company website</p>
-                                                                                                                                                            </div>
+@keyframes slide {
+    0% {margin-left: 0;}
+    33% {margin-left: -100%;}
+    66% {margin-left: -200%;}
+    100% {margin-left: 0;}
+}
 
-                                                                                                                                                                <!-- SERVICES -->
-                                                                                                                                                                    <div class="services">
-                                                                                                                                                                            <h2>Our Services</h2>
+/* LOGIN MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
 
-                                                                                                                                                                                    <div class="card">Website Design</div>
-                                                                                                                                                                                            <div class="card">App Development</div>
-                                                                                                                                                                                                    <div class="card">SEO</div>
-                                                                                                                                                                                                        </div>
+.modal-content {
+    background: white;
+    color: black;
+    width: 300px;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* SCROLL ANIMATION */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+}
+</style>
+</head>
+
 <body>
 
-    <div class="navbar">
-        🌐 Lyzonix Official Website
+<header>
+    <h1>Lyzonix</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+        <a onclick="openLogin()">Login</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Welcome to Lyzonix</h2>
+    <p>Creative Digital Solutions, Websites & Apps</p>
+    <button class="btn">Get Started</button>
+</div>
+
+<!-- SLIDER -->
+<div class="section hidden">
+    <h2>Our Highlights</h2>
+    <div class="slider">
+        <div class="slides">
+            <img src="https://picsum.photos/800/300?1">
+            <img src="https://picsum.photos/800/300?2">
+            <img src="https://picsum.photos/800/300?3">
         </div>
+    </div>
+</div>
 
-        <div class="section">
-            <h1>Welcome to Lyzonix</h1>
-                <p>Creative design, apps & future technology platform</p>
-                    <button>Explore</button>
-                    </div>
+<!-- PRODUCTS -->
+<div class="section hidden" id="products">
+    <h2>Our Products</h2>
 
-                    <div class="section">
-                        <div class="card">
-                                <h2>About Lyzonix</h2>
-                                        <p>Lyzonix is a creative platform where innovation meets design. 
-                                                We build modern apps, websites and social platforms.</p>
-                                                    </div>
+    <div class="card">Website Builder</div>
+    <div class="card">AI Tools</div>
+    <div class="card">Design Studio</div>
+    <div class="card">Mobile Apps</div>
+</div>
 
-                                                        <div class="card">
-                                                                <h2>Our Services</h2>
-                                                                        <p>✔ Website Design <br>
-                                                                                   ✔ App Development <br>
-                                                                                              ✔ Creative UI/UX</p>
-                                                                                                  </div>
+<!-- CONTACT -->
+<div class="section hidden" id="contact">
+    <h2>Contact Us</h2>
 
-                                                                                                      <div class="card">
-                                                                                                              <h2>CEO</h2>
-                                                                                                                      <p>Lali Bhardwaj</p>
-                                                                                                                          </div>
-                                                                                                                          </div>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <input type="text" placeholder="Message"><br>
+    <button class="btn" onclick="sendMsg()">Send</button>
+</div>
 
-                                                                                                                          <div class="section">
-                                                                                                                              <h2>Contact</h2>
-                                                                                                                                  <p>Email: lalikumari6207@gmail.com</p>
-                                                                                                                          </div>
-                                                                                                                                       
-                                                                                                                        </body>
-                                                                                                                                                                                                        </html>
-                                                          
-                                                                                                                                                                                                        
-<img src="logo.png" width="200">
+<footer>
+    © 2026 Lyzonix | All Rights Reserved
+</footer>
 
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <h3>Login / Signup</h3>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button class="btn">Login</button>
+        <button class="btn" onclick="closeLogin()">Close</button>
+    </div>
+</div>
 
+<script>
+// LOGIN
+function openLogin() {
+    document.getElementById("loginModal").style.display = "block";
+}
+function closeLogin() {
+    document.getElementById("loginModal").style.display = "none";
+}
 
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+// CONTACT
+function sendMsg() {
+    alert("Message sent successfully 🚀");
+}
 
+// SCROLL ANIMATION
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
