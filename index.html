@@ -6,250 +6,228 @@
 <title>Lyzonix</title>
 
 <style>
-/* 🌈 BACKGROUND ANIMATION */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    background: linear-gradient(-45deg, #ffafcc, #a2d2ff, #ffc8dd, #bde0fe);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(-45deg,#a2d2ff,#ffc8dd,#ffafcc,#bde0fe);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
+color:white;
 }
 
-@keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
 /* HEADER */
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 40px;
-    background: rgba(0,0,0,0.3);
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(10px);
+header{
+text-align:center;
+padding:20px;
 }
 
-header h1 {
-    color: #fff;
+h1{
+margin:0;
+font-size:40px;
 }
 
-nav a {
-    color: white;
-    margin: 0 12px;
-    text-decoration: none;
-    font-weight: bold;
+/* LOGO */
+.logo{
+width:110px;
+animation:float 3s ease-in-out infinite;
 }
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 120px 20px;
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0)}
 }
 
-.hero h2 {
-    font-size: 55px;
-    margin: 0;
+/* CART */
+.cart{
+position:fixed;
+top:10px;
+right:10px;
+background:white;
+color:black;
+padding:10px;
+border-radius:10px;
 }
 
-.hero p {
-    font-size: 18px;
-    margin-top: 10px;
+/* BUTTON */
+button{
+padding:8px 12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-top:5px;
 }
 
-.btn {
-    padding: 12px 25px;
-    border: none;
-    background: #fff;
-    color: black;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-top: 20px;
+/* PRODUCTS */
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+padding:20px;
 }
 
-/* SECTIONS */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.card {
-    background: rgba(0,0,0,0.25);
-    padding: 20px;
-    margin: 10px;
-    display: inline-block;
-    width: 200px;
-    border-radius: 15px;
-    transition: 0.5s;
-}
-
-.card:hover {
-    transform: scale(1.1);
-}
-
-/* SLIDER */
-.slider {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.slides {
-    display: flex;
-    width: 300%;
-    animation: slide 8s infinite;
-}
-
-.slides img {
-    width: 100%;
-}
-
-@keyframes slide {
-    0% {margin-left: 0;}
-    33% {margin-left: -100%;}
-    66% {margin-left: -200%;}
-    100% {margin-left: 0;}
+.card{
+background:rgba(0,0,0,0.3);
+padding:15px;
+width:200px;
+border-radius:15px;
+text-align:center;
 }
 
 /* LOGIN MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
 }
 
-.modal-content {
-    background: white;
-    color: black;
-    width: 300px;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 10px;
+.modal-content{
+background:white;
+color:black;
+width:300px;
+margin:15% auto;
+padding:20px;
+border-radius:10px;
+text-align:center;
 }
 
-input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
+/* CHECKOUT */
+.checkout{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
 }
 
-/* SCROLL ANIMATION */
-.hidden {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 1s;
+.checkout-box{
+background:white;
+color:black;
+width:300px;
+margin:10% auto;
+padding:20px;
+border-radius:10px;
 }
 
-.show {
-    opacity: 1;
-    transform: translateY(0);
+input{
+width:90%;
+padding:8px;
+margin:5px 0;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0,0,0,0.3);
-}
 </style>
 </head>
 
 <body>
 
+<!-- CART -->
+<div class="cart">
+🛒 Cart: <span id="cartCount">0</span><br>
+<button onclick="openCheckout()">Checkout</button>
+</div>
+
+<!-- HEADER -->
 <header>
-    <h1>Lyzonix</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-        <a onclick="openLogin()">Login</a>
-    </nav>
+<h1>Welcome to Lyzonix</h1>
+<img src="logo.png" class="logo">
+<br>
+<button onclick="openLogin()">Login / Signup</button>
 </header>
 
-<!-- HERO -->
-<div class="hero">
-    <h2>Welcome to Lyzonix</h2>
-    <p>Creative Digital Solutions, Websites & Apps</p>
-    <button class="btn">Get Started</button>
-</div>
-
-<!-- SLIDER -->
-<div class="section hidden">
-    <h2>Our Highlights</h2>
-    <div class="slider">
-        <div class="slides">
-            <img src="https://picsum.photos/800/300?1">
-            <img src="https://picsum.photos/800/300?2">
-            <img src="https://picsum.photos/800/300?3">
-        </div>
-    </div>
-</div>
-
 <!-- PRODUCTS -->
-<div class="section hidden" id="products">
-    <h2>Our Products</h2>
+<div class="products">
 
-    <div class="card">Website Builder</div>
-    <div class="card">AI Tools</div>
-    <div class="card">Design Studio</div>
-    <div class="card">Mobile Apps</div>
+<div class="card">
+Website Builder
+<button onclick="addCart()">Add</button>
 </div>
 
-<!-- CONTACT -->
-<div class="section hidden" id="contact">
-    <h2>Contact Us</h2>
-
-    <input type="text" placeholder="Your Name"><br>
-    <input type="email" placeholder="Your Email"><br>
-    <input type="text" placeholder="Message"><br>
-    <button class="btn" onclick="sendMsg()">Send</button>
+<div class="card">
+Mobile App
+<button onclick="addCart()">Add</button>
 </div>
 
-<footer>
-    © 2026 Lyzonix | All Rights Reserved
-</footer>
+<div class="card">
+AI Tools
+<button onclick="addCart()">Add</button>
+</div>
 
-<!-- LOGIN MODAL -->
+<div class="card">
+Design Studio
+<button onclick="addCart()">Add</button>
+</div>
+
+</div>
+
+<!-- LOGIN -->
 <div class="modal" id="loginModal">
-    <div class="modal-content">
-        <h3>Login / Signup</h3>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button class="btn">Login</button>
-        <button class="btn" onclick="closeLogin()">Close</button>
-    </div>
+<div class="modal-content">
+<h3>Login / Signup</h3>
+<input placeholder="Email">
+<input placeholder="Password">
+<button onclick="closeLogin()">Login</button>
+</div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="checkout" id="checkoutBox">
+<div class="checkout-box">
+<h3>Checkout</h3>
+
+<input placeholder="Name">
+<input placeholder="Address">
+<input placeholder="Phone">
+
+<button onclick="placeOrder()">Place Order</button>
+<button onclick="closeCheckout()">Close</button>
+</div>
 </div>
 
 <script>
-// LOGIN
-function openLogin() {
-    document.getElementById("loginModal").style.display = "block";
-}
-function closeLogin() {
-    document.getElementById("loginModal").style.display = "none";
-}
 
-// CONTACT
-function sendMsg() {
-    alert("Message sent successfully 🚀");
+let cart = 0;
+
+function addCart(){
+cart++;
+document.getElementById("cartCount").innerText = cart;
 }
 
-// SCROLL ANIMATION
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-});
+function openLogin(){
+document.getElementById("loginModal").style.display="block";
+}
 
-document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+function closeLogin(){
+document.getElementById("loginModal").style.display="none";
+}
+
+function openCheckout(){
+document.getElementById("checkoutBox").style.display="block";
+}
+
+function closeCheckout(){
+document.getElementById("checkoutBox").style.display="none";
+}
+
+function placeOrder(){
+alert("Order Placed Successfully 🚀");
+cart = 0;
+document.getElementById("cartCount").innerText = cart;
+closeCheckout();
+}
+
 </script>
 
 </body>
