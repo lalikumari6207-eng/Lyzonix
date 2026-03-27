@@ -3,85 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lyzonix</title>
+<title>Lyzonix Pro Max</title>
 
 <style>
-body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
 margin:0;
-font-family:Arial;
-background:linear-gradient(-45deg,#a2d2ff,#ffc8dd,#ffafcc,#bde0fe);
-background-size:400% 400%;
-animation:bg 10s ease infinite;
-color:white;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+body{
+background:radial-gradient(circle at top,#0f172a,#020617);
+color:white;
+overflow-x:hidden;
+}
+
+/* glow background */
+body::before{
+content:"";
+position:fixed;
+width:450px;
+height:450px;
+background:#38bdf8;
+filter:blur(180px);
+opacity:0.25;
+top:10%;
+left:8%;
+z-index:-1;
 }
 
 /* HEADER */
 header{
-text-align:center;
-padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 18px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:10;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-h1{
-margin:0;
-font-size:40px;
-}
-
-/* LOGO */
 .logo{
-width:110px;
-animation:float 3s ease-in-out infinite;
+width:42px;
+height:42px;
+border-radius:50%;
+border:2px solid #38bdf8;
 }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-100%{transform:translateY(0)}
-}
-
-/* CART */
-.cart{
-position:fixed;
-top:10px;
-right:10px;
-background:white;
-color:black;
-padding:10px;
-border-radius:10px;
-}
-
-/* BUTTON */
-button{
-padding:8px 12px;
+.btn{
+background:linear-gradient(135deg,#38bdf8,#22c55e);
 border:none;
+padding:8px 12px;
 border-radius:10px;
 cursor:pointer;
-margin-top:5px;
+color:white;
+transition:0.3s;
 }
 
-/* PRODUCTS */
-.products{
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:42px;
+background:linear-gradient(90deg,#38bdf8,#fff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+color:#cbd5e1;
+margin-top:10px;
+}
+
+/* SECTIONS */
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.section h2{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+/* CARDS */
+.grid{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:15px;
-padding:20px;
+gap:18px;
+margin-top:20px;
 }
 
 .card{
-background:rgba(0,0,0,0.3);
-padding:15px;
-width:200px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
+padding:18px;
 border-radius:15px;
-text-align:center;
+width:220px;
+cursor:pointer;
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.1);
 }
 
-/* LOGIN MODAL */
+.card:hover{
+transform:translateY(-10px);
+border:1px solid #38bdf8;
+}
+
+/* INPUTS */
+input,textarea{
+width:85%;
+margin:8px;
+padding:12px;
+border-radius:8px;
+border:none;
+outline:none;
+background:rgba(255,255,255,0.08);
+color:white;
+}
+
+textarea{height:90px;resize:none}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:25px;
+background:rgba(255,255,255,0.05);
+margin-top:20px;
+}
+
+/* MODAL */
 .modal{
 display:none;
 position:fixed;
@@ -90,142 +156,232 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
 }
 
-.modal-content{
-background:white;
-color:black;
-width:300px;
-margin:15% auto;
-padding:20px;
-border-radius:10px;
+.popup{
+background:#0f172a;
+padding:22px;
+border-radius:15px;
+width:280px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.popup input{
+width:100%;
+margin:6px 0;
+padding:10px;
+border-radius:8px;
+border:none;
+background:#1e293b;
+color:white;
+}
+
+/* DASHBOARD */
+.dashboard{
+display:none;
+padding:60px 20px;
 text-align:center;
 }
 
-/* CHECKOUT */
-.checkout{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
+/* 3 BOX */
+.boxes{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:20px;
 }
 
-.checkout-box{
-background:white;
-color:black;
-width:300px;
-margin:10% auto;
-padding:20px;
-border-radius:10px;
+.box{
+background:rgba(255,255,255,0.06);
+padding:18px;
+border-radius:15px;
+width:220px;
+cursor:pointer;
+transition:0.3s;
 }
 
-input{
-width:90%;
-padding:8px;
-margin:5px 0;
+.box:hover{
+transform:translateY(-8px);
+border:1px solid #38bdf8;
 }
 
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:30px;}
+.card,.box{width:90%;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- CART -->
-<div class="cart">
-🛒 Cart: <span id="cartCount">0</span><br>
-<button onclick="openCheckout()">Checkout</button>
-</div>
-
 <!-- HEADER -->
 <header>
-<h1>Welcome to Lyzonix</h1>
 <img src="logo.png" class="logo">
-<br>
-<button onclick="openLogin()">Login / Signup</button>
+<h3>Lyzonix</h3>
+<button class="btn" onclick="openLogin()">Login</button>
 </header>
 
+<!-- HERO -->
+<section class="hero" id="home">
+<h1>Welcome to Lyzonix</h1>
+<p>Build | Innovate | Grow 🚀</p>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+<h2>About Lyzonix</h2>
+<p>
+Lyzonix ek modern digital startup hai jo websites, apps aur smart systems banata hai.
+Hamara aim hai future-ready technology provide karna.
+</p>
+</section>
+
 <!-- PRODUCTS -->
-<div class="products">
+<section class="section" id="products">
+<h2>Products</h2>
 
-<div class="card">
-Website Builder
-<button onclick="addCart()">Add</button>
+<div class="grid">
+<div class="card" onclick="product('Web Apps')">⚡ Web Apps</div>
+<div class="card" onclick="product('Mobile UI')">📱 Mobile UI</div>
+<div class="card" onclick="product('E-Commerce')">🛒 E-Commerce</div>
+</div>
+</section>
+
+<!-- 3 BOX -->
+<section class="section">
+<h2>Explore</h2>
+
+<div class="boxes">
+
+<div class="box" onclick="scrollProducts()">
+<h3>Our Products</h3>
+<p>View details</p>
 </div>
 
-<div class="card">
-Mobile App
-<button onclick="addCart()">Add</button>
+<div class="box" onclick="about()">
+<h3>Lyzonix</h3>
+<p>Mission & Vision</p>
 </div>
 
-<div class="card">
-AI Tools
-<button onclick="addCart()">Add</button>
-</div>
-
-<div class="card">
-Design Studio
-<button onclick="addCart()">Add</button>
+<div class="box" onclick="openLogin()">
+<h3>Login</h3>
+<p>Access account</p>
 </div>
 
 </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+<h2>Contact</h2>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<textarea id="msg" placeholder="Message"></textarea>
+
+<br>
+<button class="btn" onclick="sendMsg()">Send</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Lyzonix | Lali Bhardwaj - CEO & Founder</p>
+</footer>
 
 <!-- LOGIN -->
-<div class="modal" id="loginModal">
-<div class="modal-content">
+<div id="loginModal" class="modal">
+<div class="popup">
 <h3>Login / Signup</h3>
-<input placeholder="Email">
-<input placeholder="Password">
-<button onclick="closeLogin()">Login</button>
+
+<input id="u" placeholder="Username">
+<input id="p" type="password" placeholder="Password">
+
+<button class="btn" onclick="signup()">Signup</button>
+<button class="btn" onclick="login()">Login</button>
+<br><br>
+<p onclick="closeLogin()" style="cursor:pointer;">Close</p>
 </div>
 </div>
 
-<!-- CHECKOUT -->
-<div class="checkout" id="checkoutBox">
-<div class="checkout-box">
-<h3>Checkout</h3>
-
-<input placeholder="Name">
-<input placeholder="Address">
-<input placeholder="Phone">
-
-<button onclick="placeOrder()">Place Order</button>
-<button onclick="closeCheckout()">Close</button>
-</div>
-</div>
+<!-- DASHBOARD -->
+<section id="dashboard" class="dashboard">
+<h1>Welcome 🚀</h1>
+<p id="userShow"></p>
+</section>
 
 <script>
 
-let cart = 0;
-
-function addCart(){
-cart++;
-document.getElementById("cartCount").innerText = cart;
+// scroll
+function scrollProducts(){
+document.getElementById("products").scrollIntoView({behavior:"smooth"});
 }
 
+// about
+function about(){
+alert("Lyzonix ka aim: futuristic digital solutions banana 🚀");
+}
+
+// products
+function product(name){
+alert(name + " selected (Coming Soon Feature)");
+}
+
+// contact
+function sendMsg(){
+let n=document.getElementById("name").value;
+let e=document.getElementById("email").value;
+let m=document.getElementById("msg").value;
+
+if(!n||!e||!m){
+alert("Fill all fields");
+return;
+}
+
+localStorage.setItem("msg",JSON.stringify({n,e,m}));
+alert("Message sent ✔");
+}
+
+// login
 function openLogin(){
-document.getElementById("loginModal").style.display="block";
+document.getElementById("loginModal").style.display="flex";
 }
 
 function closeLogin(){
 document.getElementById("loginModal").style.display="none";
 }
 
-function openCheckout(){
-document.getElementById("checkoutBox").style.display="block";
+// signup
+function signup(){
+let u=document.getElementById("u").value;
+let p=document.getElementById("p").value;
+
+localStorage.setItem("user",u);
+localStorage.setItem("pass",p);
+
+alert("Signup successful 🚀");
 }
 
-function closeCheckout(){
-document.getElementById("checkoutBox").style.display="none";
-}
+// login
+function login(){
+let u=document.getElementById("u").value;
+let p=document.getElementById("p").value;
 
-function placeOrder(){
-alert("Order Placed Successfully 🚀");
-cart = 0;
-document.getElementById("cartCount").innerText = cart;
-closeCheckout();
+if(u==localStorage.getItem("user") && p==localStorage.getItem("pass")){
+
+document.getElementById("home").style.display="none";
+document.getElementById("dashboard").style.display="block";
+document.getElementById("loginModal").style.display="none";
+
+document.getElementById("userShow").innerText="Hello " + u + " 👋";
+
+}else{
+alert("Wrong details");
+}
 }
 
 </script>
