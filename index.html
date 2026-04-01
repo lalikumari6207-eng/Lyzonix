@@ -219,6 +219,43 @@ border:1px solid #38bdf8;
 
 <body>
 
+  <section id="services">
+  <h2>Our Services</h2>
+
+  <button onclick="showForm('Website Development')">Website Development</button>
+  <button onclick="showForm('Website Management')">Website Management</button>
+  <button onclick="showForm('Logo Design')">Logo Design</button>
+  <button onclick="showForm('Mobile App Development')">Mobile App Development</button>
+</section>
+
+<br><br>
+
+<section id="formSection" style="display:none;">
+  <h2>Request Service</h2>
+
+  <form action="https://formspree.io/f/your-form-id" method="POST">
+    
+    <input type="hidden" name="service" id="serviceType">
+
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Description:</label><br>
+    <textarea name="message" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<script>
+function showForm(service) {
+  document.getElementById("formSection").style.display = "block";
+  document.getElementById("serviceType").value = service;
+}
+</script>
 <!-- HEADER -->
 <header>
 <img src="logo.png" class="logo">
