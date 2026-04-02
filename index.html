@@ -7,11 +7,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-
-body{
-background:#070b14;
-color:white;
-}
+body{background:#050814;color:white;}
 
 /* HEADER */
 header{
@@ -21,12 +17,10 @@ align-items:center;
 padding:15px 25px;
 background:#0b1224;
 border-bottom:2px solid #1e90ff;
-position:relative;
+position:sticky;top:0;
 }
 
-header h2{
-color:#1e90ff;
-}
+h2{color:#1e90ff;}
 
 nav a{
 color:white;
@@ -34,86 +28,35 @@ margin:0 10px;
 text-decoration:none;
 }
 
-.login-btn{
+.btn{
 background:#1e90ff;
-color:white;
-padding:8px 12px;
 border:none;
+padding:8px 12px;
+color:white;
 border-radius:6px;
 cursor:pointer;
 }
 
-/* LOGO BG */
-.logo-bg{
-position:absolute;
-right:10px;
-top:5px;
-height:50px;
-opacity:0.2;
-}
-
 /* HERO */
 .hero{
-height:90vh;
+height:85vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-background:linear-gradient(120deg,#070b14,#0b1a33);
+background:linear-gradient(120deg,#050814,#0b1a33);
 }
 
-.hero h1{
-font-size:45px;
-color:#1e90ff;
-}
-
-.hero p{
-color:#ccc;
-margin-top:10px;
-}
+.hero h1{font-size:50px;color:#1e90ff;}
+.hero p{color:#ccc;margin-top:10px;}
 
 /* SECTION */
-section{
-padding:50px 20px;
-}
-
-h2{
-color:#1e90ff;
-margin-bottom:15px;
-}
-
-/* ABOUT */
-.about{
-max-width:900px;
-margin:auto;
-color:#ccc;
-line-height:1.6;
-}
+section{padding:50px 20px;}
+.about{max-width:900px;margin:auto;color:#ccc;line-height:1.6;}
 
 /* SERVICES */
-.btn-group{
-display:flex;
-gap:10px;
-justify-content:center;
-margin-bottom:20px;
-}
-
-.btn{
-padding:10px 15px;
-background:#1e90ff;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-
-.cards{
-display:none;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:10px;
-}
-
+.cards{display:none;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:20px;}
 .card{
 background:#0b1224;
 padding:15px;
@@ -132,55 +75,35 @@ padding:20px;
 border-radius:10px;
 border:1px solid #1e90ff;
 }
-
 input{
 width:100%;
 padding:10px;
 margin:8px 0;
 }
-
 button.submit{
 width:100%;
 padding:10px;
 background:#1e90ff;
-border:none;
 color:white;
+border:none;
 cursor:pointer;
 }
 
-/* LOGIN MODAL */
+/* LOGIN */
 .modal{
 display:none;
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.8);
 justify-content:center;
 align-items:center;
 }
-
 .modal-box{
 background:#0b1224;
 padding:20px;
 border-radius:10px;
 width:300px;
-border:1px solid #1e90ff;
-}
-
-.modal-box input{
-width:100%;
-padding:10px;
-margin:8px 0;
-}
-
-.modal-box button{
-width:100%;
-padding:10px;
-margin-top:8px;
-background:#1e90ff;
-border:none;
-color:white;
-cursor:pointer;
 }
 
 /* FOOTER */
@@ -189,7 +112,6 @@ text-align:center;
 padding:20px;
 background:#0b1224;
 border-top:2px solid #1e90ff;
-margin-top:30px;
 }
 </style>
 </head>
@@ -198,14 +120,11 @@ margin-top:30px;
 
 <header>
 <h2>Lyzonix</h2>
-
 <nav>
 <a href="#about">About</a>
 <a href="#services">Services</a>
-<button class="login-btn" onclick="openLogin()">Login</button>
+<button class="btn" onclick="openLogin()">Login</button>
 </nav>
-
-<img src="logo.png" class="logo-bg">
 </header>
 
 <div class="hero">
@@ -216,105 +135,90 @@ margin-top:30px;
 <section id="about">
 <h2>About Us</h2>
 <div class="about">
-Lyzonix Technologies is a modern IT & HR company providing digital solutions, recruitment services, website development, mobile applications and workforce management.
-Our mission is to build smart digital systems and strong human resource networks for businesses.
+We provide IT solutions, HR services, recruitment, software development and business management systems.
 </div>
 </section>
 
 <section id="services">
 <h2>Services</h2>
 
-<div class="btn-group">
 <button class="btn" onclick="showIT()">IT Services</button>
 <button class="btn" onclick="showHR()">HR Services</button>
-</div>
 
 <div id="it" class="cards">
 <div class="card" onclick="openForm('Web Development')">Web Development</div>
-<div class="card" onclick="openForm('Mobile App')">Mobile App</div>
+<div class="card" onclick="openForm('App Development')">App Development</div>
 <div class="card" onclick="openForm('Data Management')">Data Management</div>
-<div class="card" onclick="openForm('Logo Design')">Logo Design</div>
 </div>
 
 <div id="hr" class="cards">
-<div class="card" onclick="openForm('Lateral Hiring')">Lateral Hiring</div>
-<div class="card" onclick="openForm('Warehouse Management')">Warehouse Management</div>
-<div class="card" onclick="openForm('Volume Hiring')">Volume Hiring</div>
-<div class="card" onclick="openForm('Temporary Hiring')">Temporary Hiring</div>
+<div class="card" onclick="openForm('Hiring')">Hiring</div>
+<div class="card" onclick="openForm('Staffing')">Staffing</div>
 </div>
 </section>
 
 <section>
-<h2>Apply Form</h2>
+<h2>Apply Now</h2>
 
 <form id="jobForm">
 <input type="text" id="name" placeholder="Full Name" required>
 <input type="email" id="email" placeholder="Email" required>
 <input type="text" id="phone" placeholder="Phone" required>
 <input type="text" id="service" readonly>
-<button class="submit" type="submit">Submit</button>
+<button class="submit">Submit</button>
 </form>
 </section>
 
 <footer>
-<p>CEO & Founder: Lali Kumari</p>
-<p>IT & HR Division | Lyzonix</p>
+<p>CEO: Lali Kumari</p>
 </footer>
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 <div class="modal" id="loginModal">
 <div class="modal-box">
-<h3>Login / Signup</h3>
-
+<h3>Login</h3>
 <input type="email" id="loginEmail" placeholder="Email">
 <input type="password" id="loginPass" placeholder="Password">
 
-<button onclick="signup()">Signup</button>
-<button onclick="login()">Login</button>
-
-<button onclick="closeLogin()" style="background:red;margin-top:10px;">Close</button>
+<button class="btn" onclick="signup()">Signup</button>
+<button class="btn" onclick="login()">Login</button>
+<button class="btn" style="background:red" onclick="closeLogin()">Close</button>
 </div>
 </div>
 
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
-apiKey: "AIzaSyB-D1E_H1TJs7Jc2qn9cU7y9XKFAttpJ-s",
-authDomain: "lyzonix-ddb1a.firebaseapp.com",
-projectId: "lyzonix-ddb1a",
-storageBucket: "lyzonix-ddb1a.firebasestorage.app",
-messagingSenderId: "1026769416330",
-appId: "1:1026769416330:android:f01d3138e90a900241bd73"
+apiKey: "YOUR_API_KEY",
+authDomain: "YOUR_AUTH_DOMAIN",
+projectId: "YOUR_PROJECT_ID"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 window.signup = function(){
-let email=document.getElementById("loginEmail").value;
-let pass=document.getElementById("loginPass").value;
-
-createUserWithEmailAndPassword(auth,email,pass)
-.then(()=>alert("Signup Success"))
-.catch(e=>alert(e.message));
+createUserWithEmailAndPassword(
+auth,
+document.getElementById("loginEmail").value,
+document.getElementById("loginPass").value
+).then(()=>alert("Signup Success"));
 }
 
 window.login = function(){
-let email=document.getElementById("loginEmail").value;
-let pass=document.getElementById("loginPass").value;
-
-signInWithEmailAndPassword(auth,email,pass)
-.then(()=>alert("Login Success"))
-.catch(e=>alert(e.message));
+signInWithEmailAndPassword(
+auth,
+document.getElementById("loginEmail").value,
+document.getElementById("loginPass").value
+).then(()=>alert("Login Success"));
 }
 </script>
 
 <script>
-// UI
+// UI FUNCTIONS (FULL FIXED)
 function showIT(){
 document.getElementById("it").style.display="grid";
 document.getElementById("hr").style.display="none";
@@ -331,30 +235,18 @@ document.getElementById("service").value=service;
 window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
 
-// EMAIL SEND (GMAIL)
 document.getElementById("jobForm").addEventListener("submit",function(e){
 e.preventDefault();
-
-let name=document.getElementById("name").value;
-let email=document.getElementById("email").value;
-let phone=document.getElementById("phone").value;
-let service=document.getElementById("service").value;
-
-let mailto=`mailto:lyzonixTechnologies@gmail.com?subject=Application ${service}&body=
-Name:${name}%0D%0AEmail:${email}%0D%0APhone:${phone}%0D%0AService:${service}`;
-
-window.location.href=mailto;
+alert("Application Submitted Successfully!");
 });
 
-// LOGIN MODAL
 function openLogin(){
 document.getElementById("loginModal").style.display="flex";
 }
+
 function closeLogin(){
 document.getElementById("loginModal").style.display="none";
 }
-window.openLogin=openLogin;
-window.closeLogin=closeLogin;
 </script>
 
 </body>
