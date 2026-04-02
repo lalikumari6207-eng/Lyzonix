@@ -105,7 +105,30 @@ padding:20px;
 border-radius:10px;
 width:300px;
 }
+  .faq{
+max-width:800px;
+margin:auto;
+}
 
+.faq-item{
+background:#0b1224;
+border:1px solid #1e90ff;
+margin:10px 0;
+border-radius:8px;
+cursor:pointer;
+}
+
+.question{
+padding:12px;
+font-weight:bold;
+}
+
+.answer{
+padding:12px;
+display:none;
+color:#ccc;
+border-top:1px solid #1e90ff;
+}
 /* FOOTER */
 footer{
 text-align:center;
@@ -135,7 +158,7 @@ border-top:2px solid #1e90ff;
 <section id="about">
 <h2>About Us</h2>
 <div class="about">
-We provide IT solutions, HR services, recruitment, software development and business management systems.
+Lyzonix Technologies is an IT & HR solutions company providing website development, mobile apps, recruitment, staffing, and digital business solutions. We help businesses grow with smart, reliable, and modern technology services. Our focus is on quality, innovation, and long-term client success through efficient and scalable solutions.
 </div>
 </section>
 
@@ -166,7 +189,34 @@ We provide IT solutions, HR services, recruitment, software development and busi
 <input type="text" id="phone" placeholder="Phone" required>
 <input type="text" id="service" readonly>
 <button class="submit">Submit</button>
-</form>
+</form> 
+</section>
+<section id="faq">
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<div class="faq-item">
+<div class="question">What is Lyzonix Technologies?</div>
+<div class="answer">Lyzonix Technologies is an IT & HR solutions company providing digital services like web development, apps, and recruitment solutions.</div>
+</div>
+
+<div class="faq-item">
+<div class="question">What services do you offer?</div>
+<div class="answer">We offer website development, mobile app development, HR staffing, recruitment, and data management services.</div>
+</div>
+
+<div class="faq-item">
+<div class="question">How can I apply for services?</div>
+<div class="answer">You can click on any service card, fill the form, and submit your details directly on the website.</div>
+</div>
+
+<div class="faq-item">
+<div class="question">Is login required?</div>
+<div class="answer">Login is optional. It is used for user access and future updates.</div>
+</div>
+
+</div>
 </section>
 
 <footer>
@@ -248,6 +298,19 @@ function closeLogin(){
 document.getElementById("loginModal").style.display="none";
 }
 </script>
+  <script>
+document.querySelectorAll(".faq-item").forEach(item=>{
+item.addEventListener("click",()=>{
+let ans = item.querySelector(".answer");
+
+if(ans.style.display==="block"){
+ans.style.display="none";
+}else{
+ans.style.display="block";
+}
+});
+});
+  </script>
 
 </body>
 </html>
