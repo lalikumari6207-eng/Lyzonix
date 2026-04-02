@@ -33,7 +33,7 @@ input,textarea{width:90%;margin:8px;padding:10px;border-radius:10px;border:none}
 <div class="card" onclick="selectService('Recruitment')">Recruitment</div>
 </div><div id="formBox" class="hidden">
 <h3 id="serviceName"></h3>
-<form onsubmit="sendData(event)">
+<form action="https://formspree.io/f/xvzvbzoe" method="POST" enctype="multipart/form-data">
 <input id="name" placeholder="Name" required>
 <input id="email" placeholder="Email" required>
 <textarea id="message" placeholder="Your Requirement"></textarea>
