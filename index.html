@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
 
 body{
-background:#070b14;
+background:#logo.png;
 color:white;
 }
 
@@ -25,7 +25,7 @@ position:relative;
 }
 
 header h2{
-color:#1e90ff;
+color:#1e80ff;
 }
 
 nav a{
@@ -65,7 +65,7 @@ background:linear-gradient(120deg,#070b14,#0b1a33);
 
 .hero h1{
 font-size:45px;
-color:#1e90ff;
+color:#1e80ff;
 }
 
 .hero p{
@@ -275,86 +275,6 @@ Our mission is to build smart digital systems and strong human resource networks
 <button onclick="closeLogin()" style="background:red;margin-top:10px;">Close</button>
 </div>
 </div>
-
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyB-D1E_H1TJs7Jc2qn9cU7y9XKFAttpJ-s",
-authDomain: "lyzonix-ddb1a.firebaseapp.com",
-projectId: "lyzonix-ddb1a",
-storageBucket: "lyzonix-ddb1a.firebasestorage.app",
-messagingSenderId: "1026769416330",
-appId: "1:1026769416330:android:f01d3138e90a900241bd73"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.signup = function(){
-let email=document.getElementById("loginEmail").value;
-let pass=document.getElementById("loginPass").value;
-
-createUserWithEmailAndPassword(auth,email,pass)
-.then(()=>alert("Signup Success"))
-.catch(e=>alert(e.message));
-}
-
-window.login = function(){
-let email=document.getElementById("loginEmail").value;
-let pass=document.getElementById("loginPass").value;
-
-signInWithEmailAndPassword(auth,email,pass)
-.then(()=>alert("Login Success"))
-.catch(e=>alert(e.message));
-}
-</script>
-
-<script>
-// UI
-function showIT(){
-document.getElementById("it").style.display="grid";
-document.getElementById("hr").style.display="none";
-}
-
-function showHR(){
-document.getElementById("hr").style.display="grid";
-document.getElementById("it").style.display="none";
-}
-
-function openForm(service){
-document.getElementById("jobForm").style.display="block";
-document.getElementById("service").value=service;
-window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
-}
-
-// EMAIL SEND (GMAIL)
-document.getElementById("jobForm").addEventListener("submit",function(e){
-e.preventDefault();
-
-let name=document.getElementById("name").value;
-let email=document.getElementById("email").value;
-let phone=document.getElementById("phone").value;
-let service=document.getElementById("service").value;
-
-let mailto=`mailto:lyzonixTechnologies@gmail.com?subject=Application ${service}&body=
-Name:${name}%0D%0AEmail:${email}%0D%0APhone:${phone}%0D%0AService:${service}`;
-
-window.location.href=mailto;
-});
-
-// LOGIN MODAL
-function openLogin(){
-document.getElementById("loginModal").style.display="flex";
-}
-function closeLogin(){
-document.getElementById("loginModal").style.display="none";
-}
-window.openLogin=openLogin;
-window.closeLogin=closeLogin;
 </script>
 
 </body>
