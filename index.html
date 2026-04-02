@@ -1,203 +1,251 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lyzonix</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Lyzonix Technologies</title>
 
 <style>
-html{scroll-behavior:smooth;}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
 body{
-margin:0;
-font-family:Poppins;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:#fff;
-text-align:center;
+  background:#0b0f1a;
+  color:white;
 }
 
-header{padding:15px;font-size:22px;font-weight:bold;}
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:#050814;
+  border-bottom:2px solid gold;
+}
+nav h2{color:gold;}
+nav a{color:white;margin:0 10px;text-decoration:none}
 
+/* HERO */
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(120deg,#0b0f1a,#111a33);
+}
 .hero h1{
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 2s forwards;
+  font-size:50px;
+  color:gold;
+  animation:fadeIn 2s ease-in-out;
 }
-@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.hero p{
+  font-size:18px;
+  margin-top:10px;
+  color:#ccc;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(-30px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
+/* SECTION */
+section{
+  padding:60px 20px;
+}
+h2{
+  color:gold;
+  margin-bottom:20px;
+}
+
+/* ABOUT */
+.about{
+  max-width:900px;
+  margin:auto;
+  color:#ddd;
+  line-height:1.6;
+}
+
+/* SERVICES */
+.service-box{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:20px;
+}
+.btn{
+  padding:10px 20px;
+  border:none;
+  cursor:pointer;
+  background:gold;
+  color:black;
+  font-weight:bold;
+  border-radius:8px;
+}
+.card-container{
+  display:none;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
 .card{
-background:rgba(255,255,255,0.1);
-margin:10px;
-padding:15px;
-border-radius:15px;
-cursor:pointer;
-transition:0.3s;
-}
-.card:hover{transform:scale(1.05);}
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:20px;
-background:#00c6ff;
-color:#fff;
-cursor:pointer;
-margin:5px;
+  background:#111a33;
+  padding:15px;
+  border-radius:10px;
+  cursor:pointer;
+  border:1px solid gold;
 }
 
-.hidden{display:none;}
-
-input{
-width:90%;
-padding:10px;
-margin:8px;
-border-radius:10px;
-border:none;
+/* FORM */
+form{
+  background:#111a33;
+  padding:20px;
+  border-radius:10px;
+  max-width:400px;
+  margin:auto;
+  display:none;
+}
+input,select{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+}
+button.submit{
+  background:gold;
+  border:none;
+  padding:10px;
+  width:100%;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* Login Box */
-.loginBox{
-background:rgba(0,0,0,0.4);
-padding:20px;
-margin:20px;
-border-radius:15px;
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#050814;
+  border-top:2px solid gold;
 }
 </style>
 </head>
 
 <body>
 
-<header>Lyzonix</header>
+<nav>
+<h2>Lyzonix</h2>
+<div>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#login">Login</a>
+</div>
+</nav>
 
 <div class="hero">
-<h1>Welcome to Lyzonix</h1>
-<p>Build | Innovate | Grow 🚀</p>
+<h1>WELCOME TO LYZONIX</h1>
+<p>IT & HR Solutions Company</p>
 </div>
 
-<h2>Login / Signup</h2>
+<section id="about">
+<h2>About Us</h2>
+<div class="about">
+Lyzonix Technologies is a modern IT and HR solutions company focused on delivering innovative digital services and workforce solutions.
+We specialize in website development, mobile applications, data management, recruitment, and staffing services.
+Our mission is to empower businesses with technology and human resource excellence.
+</div>
+</section>
 
-<div class="loginBox">
+<section id="services">
+<h2>Services</h2>
 
-<input type="email" id="email" placeholder="Enter Email">
-<input type="password" id="password" placeholder="Enter Password">
-
-<button onclick="emailLogin()">Login / Signup</button>
-
-<hr>
-
-<button onclick="googleLogin()">Continue with Google</button>
-
-<hr>
-
-<input type="text" id="phone" placeholder="Enter Phone Number (+91...)">
-<div id="recaptcha"></div>
-
-<button onclick="sendOTP()">Send OTP</button>
-
-<input type="text" id="otp" placeholder="Enter OTP">
-<button onclick="verifyOTP()">Verify OTP</button>
-
+<div class="service-box">
+<button class="btn" onclick="showIT()">IT Services</button>
+<button class="btn" onclick="showHR()">HR Services</button>
 </div>
 
-<footer style="margin-top:40px;padding:20px;background:rgba(0,0,0,0.3);">
-<h3>IT & HR Company</h3>
+<div id="it" class="card-container">
+<div class="card" onclick="openForm('Web Development')">Web Development</div>
+<div class="card" onclick="openForm('Mobile App')">Mobile App Development</div>
+<div class="card" onclick="openForm('Data Management')">Data Management</div>
+<div class="card" onclick="openForm('Logo Design')">Logo Design</div>
+</div>
+
+<div id="hr" class="card-container">
+<div class="card" onclick="openForm('Lateral Hiring')">Lateral Hiring</div>
+<div class="card" onclick="openForm('Warehouse Management')">Warehouse Management</div>
+<div class="card" onclick="openForm('Volume Hiring')">Volume Hiring</div>
+<div class="card" onclick="openForm('Temporary Hiring')">Temporary Hiring</div>
+</div>
+</section>
+
+<section>
+<h2>Apply Form</h2>
+<form id="jobForm">
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="text" id="phone" placeholder="Phone Number" required>
+<input type="text" id="service" readonly>
+<button type="submit" class="submit">Submit</button>
+</form>
+</section>
+
+<section id="login">
+<h2>Login / Signup (Firebase Ready)</h2>
+<p style="color:#ccc">Firebase integration ready hai, bas login system add kar sakti ho.</p>
+</section>
+
+<footer>
 <p>CEO & Founder: Lali Kumari</p>
+<p>IT & HR Division | Lyzonix Technologies</p>
 </footer>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-
 <script>
+// SERVICE TOGGLE
+function showIT(){
+document.getElementById("it").style.display="grid";
+document.getElementById("hr").style.display="none";
+}
+function showHR(){
+document.getElementById("hr").style.display="grid";
+document.getElementById("it").style.display="none";
+}
 
-// 🔥 Yaha apna Firebase config daalo
+// FORM OPEN
+function openForm(service){
+document.getElementById("jobForm").style.display="block";
+document.getElementById("service").value=service;
+window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+
+// FORM SUBMIT (EMAIL SEND)
+document.getElementById("jobForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let service=document.getElementById("service").value;
+
+let mailtoLink=
+`mailto:lyzonixTechnologies@gmail.com?subject=Job Application - ${service}&body=
+Name: ${name}%0D%0A
+Email: ${email}%0D%0A
+Phone: ${phone}%0D%0A
+Service: ${service}`;
+
+window.location.href=mailtoLink;
+});
+
+// FIREBASE CONFIG (READY ONLY)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT"
+  apiKey: "AIzaSyB-D1E_H1TJs7Jc2qn9cU7y9XKFAttpJ-s",
+  authDomain: "lyzonix-ddb1a.firebaseapp.com",
+  projectId: "lyzonix-ddb1a",
+  storageBucket: "lyzonix-ddb1a.firebasestorage.app",
+  messagingSenderId: "1026769416330",
+  appId: "1:1026769416330:android:f01d3138e90a900241bd73"
 };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-// Email login
-function emailLogin(){
-let email=document.getElementById("email").value;
-let pass=document.getElementById("password").value;
-
-auth.signInWithEmailAndPassword(email,pass)
-.catch(()=>{
-auth.createUserWithEmailAndPassword(email,pass);
-});
-}
-
-// Google login
-function googleLogin(){
-let provider=new firebase.auth.GoogleAuthProvider();
-auth.signInWithPopup(provider);
-}
-
-// OTP setup
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha',{
-  size:'normal'
-});
-
-// Send OTP
-function sendOTP(){
-let phone=document.getElementById("phone").value;
-auth.signInWithPhoneNumber(phone,window.recaptchaVerifier)
-.then(res=>window.confirmationResult=res);
-}
-
-// Verify OTP
-function verifyOTP(){
-let code=document.getElementById("otp").value;
-confirmationResult.confirm(code)
-.then(()=>alert("Login Success"));
-}
-
+console.log("Firebase Ready", firebaseConfig);
 </script>
 
 </body>
 </html>
-{
-  "project_info": {
-    "project_number": "1026769416330",
-    "project_id": "lyzonix-ddb1a",
-    "storage_bucket": "lyzonix-ddb1a.firebasestorage.app"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1026769416330:android:f01d3138e90a900241bd73",
-        "android_client_info": {
-          "package_name": "Com.lyzonix.technology"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1026769416330-j07hvgim88q1f99scgqjfdbl5uccpdng.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB-D1E_h1TJs7Jc2qn9cU7y9XKFAttpJ-s"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1026769416330-j07hvgim88q1f99scgqjfdbl5uccpdng.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
-}
