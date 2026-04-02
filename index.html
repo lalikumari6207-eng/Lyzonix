@@ -1,101 +1,203 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lyzonix</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Poppins;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:#fff;text-align:center}
-header{display:flex;justify-content:space-between;padding:15px}
-button{padding:10px 20px;border:none;border-radius:20px;background:#00c6ff;color:#fff}
-.hero h1{opacity:0;animation:fade 2s forwards}
-@keyframes fade{to{opacity:1}}
-.card{background:rgba(255,255,255,0.1);margin:10px;padding:15px;border-radius:15px;cursor:pointer}
-.hidden{display:none}
-input,textarea{width:90%;margin:8px;padding:10px;border-radius:10px;border:none}
+html{scroll-behavior:smooth;}
+
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:#fff;
+text-align:center;
+}
+
+header{padding:15px;font-size:22px;font-weight:bold;}
+
+.hero h1{
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 2s forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+.card{
+background:rgba(255,255,255,0.1);
+margin:10px;
+padding:15px;
+border-radius:15px;
+cursor:pointer;
+transition:0.3s;
+}
+.card:hover{transform:scale(1.05);}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#00c6ff;
+color:#fff;
+cursor:pointer;
+margin:5px;
+}
+
+.hidden{display:none;}
+
+input{
+width:90%;
+padding:10px;
+margin:8px;
+border-radius:10px;
+border:none;
+}
+
+/* Login Box */
+.loginBox{
+background:rgba(0,0,0,0.4);
+padding:20px;
+margin:20px;
+border-radius:15px;
+}
 </style>
 </head>
-<body><header>
-<h2>Lyzonix</h2>
-</header><div class="hero">
+
+<body>
+
+<header>Lyzonix</header>
+
+<div class="hero">
 <h1>Welcome to Lyzonix</h1>
 <p>Build | Innovate | Grow 🚀</p>
-</div><h2>About Lyzonix</h2>
-<p>Lyzonix is a modern company that manages both IT and HR services in one platform. Users do not need to switch between multiple platforms. We provide web development, mobile apps, data management, hiring, recruitment, and workforce solutions.</p><h2>Our Services</h2>
-<div class="card" onclick="showIT()">IT Work</div>
-<div class="card" onclick="showHR()">HR Work</div><div id="it" class="hidden">
-<div class="card" onclick="selectService('Web Development')">Web Development</div>
-<div class="card" onclick="selectService('Data Management')">Data Management</div>
-<div class="card" onclick="selectService('Mobile App')">Mobile App</div>
-</div><div id="hr" class="hidden">
-<div class="card" onclick="selectService('Hiring')">Hiring</div>
-<div class="card" onclick="selectService('Warehouse')">Warehouse Management</div>
-<div class="card" onclick="selectService('Recruitment')">Recruitment</div>
-</div><div id="formBox" class="hidden">
-  <h2>Apply / Contact</h2>
+</div>
 
-<form action="https://formspree.io/f/xvzvbzoe" method="POST" enctype="multipart/form-data">
+<h2>Login / Signup</h2>
 
-  <input type="text" name="name" placeholder="Your Name" required><br><br>
+<div class="loginBox">
 
-  <input type="email" name="email" placeholder="Your Email" required><br><br>
+<input type="email" id="email" placeholder="Enter Email">
+<input type="password" id="password" placeholder="Enter Password">
 
-  <textarea name="message" placeholder="Your Requirement"></textarea><br><br>
+<button onclick="emailLogin()">Login / Signup</button>
 
-  <input type="file" name="resume" required><br><br>
+<hr>
 
-  <button type="submit">Submit</button>
+<button onclick="googleLogin()">Continue with Google</button>
 
-</form>
-<h3 id="serviceName"></h3>
-<form action="https://formspree.io/f/xvzvbzoe" method="POST" enctype="multipart/form-data">
-<input id="name" placeholder="Name" required>
-<input id="email" placeholder="Email" required>
-<textarea id="message" placeholder="Your Requirement"></textarea>
-<input type="file" id="resume" required>
-<button>Submit</button>
-</form>
-</div><h2>Who We Are</h2>
-<p>We are an IT & HR company focused on innovation and growth. Our mission is to simplify business and hiring processes.</p><footer>
-IT & HR Company | CEO & Founder Lali Kumari
-</footer><script>
-function showIT(){document.getElementById('it').classList.remove('hidden');}
-function showHR(){document.getElementById('hr').classList.remove('hidden');}
-function selectService(s){
-document.getElementById('formBox').classList.remove('hidden');
-document.getElementById('serviceName').innerText=s;
-window.selectedService=s;
+<hr>
+
+<input type="text" id="phone" placeholder="Enter Phone Number (+91...)">
+<div id="recaptcha"></div>
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<input type="text" id="otp" placeholder="Enter OTP">
+<button onclick="verifyOTP()">Verify OTP</button>
+
+</div>
+
+<footer style="margin-top:40px;padding:20px;background:rgba(0,0,0,0.3);">
+<h3>IT & HR Company</h3>
+<p>CEO & Founder: Lali Kumari</p>
+</footer>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+
+<script>
+
+// 🔥 Yaha apna Firebase config daalo
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// Email login
+function emailLogin(){
+let email=document.getElementById("email").value;
+let pass=document.getElementById("password").value;
+
+auth.signInWithEmailAndPassword(email,pass)
+.catch(()=>{
+auth.createUserWithEmailAndPassword(email,pass);
+});
 }
 
-function sendData(e){
-e.preventDefault();
-
-let formData=new FormData();
-formData.append("name",document.getElementById("name").value);
-formData.append("email",document.getElementById("email").value);
-formData.append("message",document.getElementById("message").value);
-formData.append("service",window.selectedService);
-formData.append("resume",document.getElementById("resume").files[0]);
-
-fetch('https://your-app.onrender.com/submit',{
-method:'POST',
-body:formData
-})
-.then(()=>alert('Submitted Successfully'));
+// Google login
+function googleLogin(){
+let provider=new firebase.auth.GoogleAuthProvider();
+auth.signInWithPopup(provider);
 }
-</script></body>
-</html>// ================= BACKEND (server.js) ================= const express=require('express'); const cors=require('cors'); const bodyParser=require('body-parser'); const nodemailer=require('nodemailer'); const multer=require('multer');
 
-const app=express(); app.use(cors()); app.use(bodyParser.json());
+// OTP setup
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha',{
+  size:'normal'
+});
 
-const upload=multer({dest:'uploads/'});
+// Send OTP
+function sendOTP(){
+let phone=document.getElementById("phone").value;
+auth.signInWithPhoneNumber(phone,window.recaptchaVerifier)
+.then(res=>window.confirmationResult=res);
+}
 
-const transporter=nodemailer.createTransport({ service:'gmail', auth:{user:'YOUR_EMAIL@gmail.com',pass:'APP_PASSWORD'} });
+// Verify OTP
+function verifyOTP(){
+let code=document.getElementById("otp").value;
+confirmationResult.confirm(code)
+.then(()=>alert("Login Success"));
+}
 
-app.post('/submit',upload.single('resume'),(req,res)=>{ const {name,email,message,service}=req.body; const file=req.file;
+</script>
 
-transporter.sendMail({ from:email, to:'YOUR_EMAIL@gmail.com', subject:New ${service}, text:Name:${name}\nEmail:${email}\nMessage:${message}, attachments:[{filename:file.originalname,path:file.path}] },(err)=>{ if(err) return res.send(err); res.send('Done'); }); });
-
-app.listen(3000,()=>console.log('Server running'));
-
-// ================= INSTALL ================= // npm init -y // npm install express cors body-parser nodemailer multer // node server.js
+</body>
+</html>
+{
+  "project_info": {
+    "project_number": "1026769416330",
+    "project_id": "lyzonix-ddb1a",
+    "storage_bucket": "lyzonix-ddb1a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026769416330:android:f01d3138e90a900241bd73",
+        "android_client_info": {
+          "package_name": "Com.lyzonix.technology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026769416330-j07hvgim88q1f99scgqjfdbl5uccpdng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-D1E_h1TJs7Jc2qn9cU7y9XKFAttpJ-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026769416330-j07hvgim88q1f99scgqjfdbl5uccpdng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
