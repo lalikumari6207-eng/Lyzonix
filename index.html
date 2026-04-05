@@ -287,7 +287,7 @@ document.getElementById("popup").style.display="none";
 
 /* EMAILJS */
 (function(){
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init("rNRTqXw87kcUlr461");
 })();
 
 function sendEmail(){
@@ -298,7 +298,7 @@ from_email: document.getElementById("email").value,
 message: document.getElementById("message").value
 };
 
-emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",params)
+emailjs.send("service_uqmihet","template_fquvwxg",params)
 .then(()=>{
 alert("Message Sent 🚀");
 closeForm();
