@@ -7,13 +7,10 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
 background:#050816;
@@ -37,13 +34,38 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+animation:floatHero 6s ease-in-out infinite;
 }
 
-/* MORPH TEXT */
+@keyframes floatHero{
+0%,100%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+}
+
+/* LYZONIX MAIN LOGO */
+.logo{
+font-size:5rem;
+font-weight:900;
+letter-spacing:5px;
+background:linear-gradient(90deg,#4f46e5,#22c55e,#06b6d4,#a855f7);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:glowMove 4s linear infinite;
+text-shadow:0 0 30px rgba(79,70,229,0.5);
+}
+
+@keyframes glowMove{
+0%{background-position:0%;}
+100%{background-position:300%;}
+}
+
+/* MORPH */
 .morph{
-font-size:4rem;
+font-size:3rem;
 font-weight:800;
 position:relative;
+margin-top:10px;
 }
 
 .morph span{
@@ -61,18 +83,13 @@ animation:wordSwitch 8s infinite;
 .morph span:nth-child(4){animation-delay:6s;color:#a855f7;}
 
 @keyframes wordSwitch{
-0%{opacity:0;transform:translateY(20px) scale(0.9);}
-10%{opacity:1;transform:translateY(0) scale(1.1);}
+0%{opacity:0;transform:translateY(20px);}
+10%{opacity:1;transform:translateY(0);}
 25%{opacity:0;}
 100%{opacity:0;}
 }
 
-.hero p{
-margin-top:25px;
-opacity:0.8;
-}
-
-/* BUTTONS */
+/* BUTTON */
 .btn{
 margin-top:25px;
 padding:12px 28px;
@@ -84,28 +101,16 @@ transition:0.3s;
 }
 
 .btn1{background:#4f46e5;color:white;}
-.btn2{background:white;color:#050816;margin-left:10px;}
-
-.btn:hover{
-transform:translateY(-5px) scale(1.05);
-}
+.btn:hover{transform:scale(1.05);}
 
 /* SECTIONS */
 section{
 padding:90px 10%;
-opacity:0;
-transform:translateY(50px);
-transition:1s;
-}
-
-section.show{
-opacity:1;
-transform:translateY(0);
 }
 
 h2{
-font-size:2rem;
 margin-bottom:20px;
+font-size:2rem;
 }
 
 /* GRID */
@@ -115,53 +120,66 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
 }
 
-/* CARD */
 .card{
 background:rgba(255,255,255,0.06);
-backdrop-filter:blur(12px);
 padding:25px;
 border-radius:18px;
-transition:0.4s;
+cursor:pointer;
 border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
 }
 
 .card:hover{
-transform:rotateX(10deg) rotateY(-10deg) scale(1.05);
-background:rgba(255,255,255,0.1);
+transform:scale(1.05);
+background:rgba(255,255,255,0.12);
 }
 
 /* FAQ */
 .faq{
 background:rgba(255,255,255,0.05);
 padding:15px;
-border-radius:12px;
-margin-bottom:10px;
+margin:10px 0;
+border-radius:10px;
 cursor:pointer;
 }
 
-.answer{
+/* POPUP */
+.popup{
 display:none;
-margin-top:10px;
-opacity:0.8;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
-/* CONTACT */
+.popup-box{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+width:90%;
+max-width:400px;
+}
+
 input,textarea{
 width:100%;
-padding:12px;
-margin:10px 0;
+padding:10px;
+margin:8px 0;
 border-radius:10px;
-border:none;
-outline:none;
+border:1px solid #ccc;
 }
 
 button.send{
-background:#22c55e;
+background:green;
 color:white;
-padding:12px 25px;
+padding:10px;
 border:none;
-border-radius:30px;
+border-radius:10px;
 cursor:pointer;
+width:100%;
 }
 
 /* FOOTER */
@@ -170,7 +188,6 @@ text-align:center;
 padding:40px;
 background:#020617;
 }
-
 </style>
 </head>
 
@@ -181,19 +198,18 @@ background:#020617;
 <!-- HERO -->
 <div class="hero">
 
+<h1 class="logo">LYZONIX</h1>
+
 <div class="morph">
-<span>LYZONIX</span>
 <span>INNOVATE</span>
 <span>BUILD</span>
 <span>SCALE</span>
+<span>TRANSFORM</span>
 </div>
 
 <p>IT • HR • Data Analytics • Cloud Solutions</p>
 
-<div>
-<button class="btn btn1">Contact Us</button>
-<button class="btn btn2">Our Services</button>
-</div>
+<button class="btn btn1" onclick="openForm()">Contact Us</button>
 
 </div>
 
@@ -201,113 +217,92 @@ background:#020617;
 <section>
 <h2>Services</h2>
 <div class="grid">
-<div class="card">💻 IT Solutions</div>
-<div class="card">🌐 Web Development</div>
-<div class="card">📱 App Development</div>
-<div class="card">👨‍💼 HR Services</div>
-<div class="card">📊 Data Analytics</div>
-<div class="card">☁ Cloud Services</div>
+
+<div class="card" onclick="openForm()">💻 IT Solutions</div>
+<div class="card" onclick="openForm()">🌐 Web Development</div>
+<div class="card" onclick="openForm()">📱 App Development</div>
+<div class="card" onclick="openForm()">👨‍💼 HR Services</div>
+<div class="card" onclick="openForm()">📊 Data Analytics</div>
+<div class="card" onclick="openForm()">☁ Cloud Services</div>
+
 </div>
 </section>
 
 <!-- ABOUT -->
 <section>
 <h2>About Us</h2>
-<p style="opacity:0.8">
-Lyzonix Technologies is an enterprise IT & HR solutions company focused on digital transformation, software development and data analytics. We build scalable systems for startups and enterprises.
-</p>
+<p>Lyzonix Technologies is an enterprise IT & HR solutions company focused on digital transformation and scalable systems.</p>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ (8) -->
 <section>
 <h2>FAQ</h2>
 
-<div class="faq" onclick="toggle(this)">
-What services do you provide?
-<div class="answer">We provide IT Solutions, Web Development, App Development, HR Services, Data Analytics and Cloud Solutions.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Do you accept projects?
-<div class="answer">Yes, we work with startups, enterprises and businesses.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-How can I contact you?
-<div class="answer">Email: lyzonixtechnologies@gmail.com</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Do you provide internships?
-<div class="answer">Yes, internships are available in IT and HR fields.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Is your service paid?
-<div class="answer">We provide both paid services and training opportunities.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Do you build websites?
-<div class="answer">Yes, we create modern, responsive and custom websites.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Where are you located?
-<div class="answer">We are a remote digital company working globally.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Can I collaborate with you?
-<div class="answer">Yes, collaborations and partnerships are welcome.</div>
-</div>
-
-<div class="faq" onclick="toggle(this)">
-Is Lyzonix a registered company?
-<div class="answer">We are growing and building our official legal structure.</div>
-</div>
+<div class="faq">What services do you provide?</div>
+<div class="faq">Do you accept projects?</div>
+<div class="faq">How can I contact you?</div>
+<div class="faq">Do you provide internships?</div>
+<div class="faq">Is service paid?</div>
+<div class="faq">Do you build websites?</div>
+<div class="faq">Where are you located?</div>
+<div class="faq">Can I collaborate?</div>
 
 </section>
 
-<!-- CONTACT -->
-<section>
-<h2>Contact Us</h2>
-<input placeholder="Name">
-<input placeholder="Email">
-<textarea rows="4" placeholder="Message"></textarea>
-<button class="send">Send</button>
-</section>
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<h3>Contact Lyzonix</h3>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<textarea id="message" placeholder="Message"></textarea>
+
+<button class="send" onclick="sendEmail()">Send</button>
+<button onclick="closeForm()" style="margin-top:10px;background:red;color:white;border:none;padding:10px;width:100%;border-radius:10px;">Close</button>
+</div>
+</div>
 
 <!-- FOOTER -->
 <footer>
 <p>Lyzonix Technologies</p>
-<p>Enterprise IT & HR Solutions</p>
 <p>lyzonixtechnologies@gmail.com</p>
-<br>
 <p><b>CEO & Founder: Lali Kumari</b></p>
-<p>© 2026 All Rights Reserved</p>
 </footer>
 
 <script>
 
-/* FAQ */
-function toggle(el){
-let ans = el.querySelector(".answer");
-ans.style.display = ans.style.display === "block" ? "none" : "block";
+/* POPUP */
+function openForm(){
+document.getElementById("popup").style.display="flex";
 }
 
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", ()=>{
-sections.forEach(sec=>{
-let top = window.scrollY;
-let offset = sec.offsetTop - 500;
-if(top > offset){
-sec.classList.add("show");
+function closeForm(){
+document.getElementById("popup").style.display="none";
 }
+
+/* EMAILJS */
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+function sendEmail(){
+
+let params = {
+from_name: document.getElementById("name").value,
+from_email: document.getElementById("email").value,
+message: document.getElementById("message").value
+};
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",params)
+.then(()=>{
+alert("Message Sent 🚀");
+closeForm();
+})
+.catch(()=>{
+alert("Error Sending Message");
 });
-});
+}
 
 /* PARTICLES */
 const canvas = document.getElementById("particles");
@@ -316,25 +311,20 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particlesArray = [];
+let particlesArray=[];
 
 class Particle{
 constructor(){
-this.x = Math.random()*canvas.width;
-this.y = Math.random()*canvas.height;
-this.size = Math.random()*2;
-this.speedX = Math.random()*1-0.5;
-this.speedY = Math.random()*1-0.5;
+this.x=Math.random()*canvas.width;
+this.y=Math.random()*canvas.height;
+this.size=Math.random()*2;
+this.speedX=Math.random()-0.5;
+this.speedY=Math.random()-0.5;
 }
-
 update(){
-this.x += this.speedX;
-this.y += this.speedY;
-
-if(this.x < 0) this.x = canvas.width;
-if(this.y < 0) this.y = canvas.height;
+this.x+=this.speedX;
+this.y+=this.speedY;
 }
-
 draw(){
 ctx.fillStyle="white";
 ctx.beginPath();
@@ -344,17 +334,12 @@ ctx.fill();
 }
 
 function init(){
-for(let i=0;i<120;i++){
-particlesArray.push(new Particle());
-}
+for(let i=0;i<120;i++) particlesArray.push(new Particle());
 }
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-particlesArray.forEach(p=>{
-p.update();
-p.draw();
-});
+particlesArray.forEach(p=>{p.update();p.draw();});
 requestAnimationFrame(animate);
 }
 
