@@ -318,8 +318,47 @@ ans.style.display="none";
 }else{
 ans.style.display="block";
 }
-});
-});
+  <title>Lyzonix Contact</title>
+
+  <!-- EmailJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+
+<body>
+
+<h2>Contact Us - Lyzonix</h2>
+
+<form id="contact-form">
+  <input type="text" name="name" placeholder="Your Name" required><br><br>
+  
+  <input type="email" name="email" placeholder="Your Email" required><br><br>
+  
+  <textarea name="message" placeholder="Your Work" required></textarea><br><br>
+  
+  <button type="submit">Send Message</button>
+</form>
+
+<script>
+  (function(){
+    emailjs.init("rNRTqXw87kcUlr461");
+  })();
+
+  document.getElementById("contact-form")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm(
+      "service_uqmihet",
+      "template_z8j2yd9",
+      this
+    )
+    .then(function() {
+      alert("Message Sent Successfully ✅");
+      document.getElementById("contact-form").reset();
+    }, function(error) {
+      alert("Failed ❌ " + error.text);
+    });
+  });
   </script>
 
 </body>
