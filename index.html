@@ -242,16 +242,90 @@ Lyzonix Technologies — Innovate. Build. Scale. Transform.</p>
 <section>
 <h2>FAQ</h2>
 
-<div class="faq">What services do you provide?</div>
-<div class="faq">Do you accept projects?</div>
-<div class="faq">How can I contact you?</div>
-<div class="faq">Do you provide internships?</div>
-<div class="faq">Is service paid?</div>
-<div class="faq">Do you build websites?</div>
-<div class="faq">Where are you located?</div>
-<div class="faq">Can I collaborate?</div>
+<div class="faq">
+<div class="question">What services do you provide?</div>
+<div class="answer">We provide IT solutions, web development, app development, HR services, data analytics, and cloud solutions.</div>
+</div>
+
+<div class="faq">
+<div class="question">Do you accept projects?</div>
+<div class="answer">Yes, we accept both small and large scale projects for startups and enterprises.</div>
+</div>
+
+<div class="faq">
+<div class="question">How can I contact you?</div>
+<div class="answer">You can contact us via email or through the contact form on our website.</div>
+</div>
+
+<div class="faq">
+<div class="question">Do you provide internships?</div>
+<div class="answer">Yes, we provide internship opportunities in IT and HR domains.</div>
+</div>
+
+<div class="faq">
+<div class="question">Is your service paid?</div>
+<div class="answer">Yes, our services are paid depending on project requirements.</div>
+</div>
+
+<div class="faq">
+<div class="question">Do you build websites?</div>
+<div class="answer">Yes, we design and develop modern responsive websites.</div>
+</div>
+
+<div class="faq">
+<div class="question">Where are you located?</div>
+<div class="answer">We operate digitally and serve clients globally.</div>
+</div>
+
+<div class="faq">
+<div class="question">Can I collaborate with Lyzonix?</div>
+<div class="answer">Yes, we welcome collaborations with individuals and companies.</div>
+</div>
+
+<div class="faq">
+<div class="question">Do you provide cloud solutions?</div>
+<div class="answer">Yes, we provide scalable and secure cloud solutions for businesses.</div>
+</div>
 
 </section>
+
+<style>
+.faq{
+background:rgba(255,255,255,0.05);
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.faq:hover{
+background:rgba(255,255,255,0.1);
+}
+
+.question{
+font-weight:600;
+}
+
+.answer{
+display:none;
+margin-top:10px;
+color:#cbd5e1;
+line-height:1.5;
+}
+
+.faq.active .answer{
+display:block;
+}
+</style>
+
+<script>
+document.querySelectorAll(".faq").forEach(faq=>{
+faq.addEventListener("click",()=>{
+faq.classList.toggle("active");
+});
+});
+</script>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
