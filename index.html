@@ -1,150 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta property="og:image" content="https://lalikumari6207-eng.github.io/Lyzonix/og-image.png">
-  <!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png?v=5">
-<link rel="shortcut icon" href="favicon.png?v=5">
-
-<!-- Open Graph (Preview ke liye) -->
-<meta property="og:title" content="Lyzonix Technologies">
-<meta property="og:description" content="IT & HR Solutions Company">
-<meta property="og:image" content="https://lalikumari6207-eng.github.io/Lyzonix/favicon.png">
-<meta property="og:url" content="https://lalikumari6207-eng.github.io/Lyzonix/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lyzonix Technologies</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png?v=5">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Lyzonix Technologies">
+<meta property="og:description" content="IT & HR Solutions Company">
+<meta property="og:image" content="https://lalikumari6207-eng.github.io/Lyzonix/og-image.png">
+<meta property="og:url" content="https://lalikumari6207-eng.github.io/Lyzonix/">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
 body{background:#050814;color:white;}
 
-/* HEADER */
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 25px;
-background:#0b1224;
-border-bottom:2px solid #1e90ff;
-position:sticky;top:0;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 25px;background:#0b1224;
+border-bottom:2px solid #1e90ff;position:sticky;top:0;
 }
 
 h2{color:#1e90ff;}
 
-nav a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-}
+nav a{color:white;margin:0 10px;text-decoration:none;}
 
 .btn{
-background:#1e90ff;
-border:none;
-padding:8px 12px;
-color:white;
-border-radius:6px;
-cursor:pointer;
+background:#1e90ff;border:none;padding:8px 12px;
+color:white;border-radius:6px;cursor:pointer;
 }
 
-/* HERO */
 .hero{
-height:85vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+height:85vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;
 background:linear-gradient(120deg,#050814,#0b1a33);
 }
 
 .hero h1{font-size:50px;color:#1e90ff;}
 .hero p{color:#ccc;margin-top:10px;}
 
-/* SECTION */
 section{padding:50px 20px;}
+
 .about{max-width:900px;margin:auto;color:#ccc;line-height:1.6;}
 
-/* SERVICES */
 .cards{display:none;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:20px;}
+
 .card{
-background:#0b1224;
-padding:15px;
-border:1px solid #1e90ff;
-border-radius:10px;
-cursor:pointer;
+background:#0b1224;padding:15px;
+border:1px solid #1e90ff;border-radius:10px;cursor:pointer;
 }
 
-/* FORM */
 form{
-display:none;
-max-width:400px;
-margin:auto;
-background:#0b1224;
-padding:20px;
-border-radius:10px;
-border:1px solid #1e90ff;
-}
-input{
-width:100%;
-padding:10px;
-margin:8px 0;
-}
-button.submit{
-width:100%;
-padding:10px;
-background:#1e90ff;
-color:white;
-border:none;
-cursor:pointer;
+max-width:400px;margin:auto;
+background:#0b1224;padding:20px;
+border-radius:10px;border:1px solid #1e90ff;
 }
 
-/* LOGIN */
+input, textarea{
+width:100%;padding:10px;margin:8px 0;
+}
+
+button.submit{
+width:100%;padding:10px;
+background:#1e90ff;color:white;border:none;
+}
+
 .modal{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
+display:none;position:fixed;top:0;left:0;
+width:100%;height:100%;background:rgba(0,0,0,0.8);
+justify-content:center;align-items:center;
 }
+
 .modal-box{
-background:#0b1224;
-padding:20px;
-border-radius:10px;
-width:300px;
+background:#0b1224;padding:20px;
+border-radius:10px;width:300px;
 }
-  .faq{
-max-width:800px;
-margin:auto;
-}
+
+.faq{max-width:800px;margin:auto;}
 
 .faq-item{
-background:#0b1224;
-border:1px solid #1e90ff;
-margin:10px 0;
-border-radius:8px;
-cursor:pointer;
+background:#0b1224;border:1px solid #1e90ff;
+margin:10px 0;border-radius:8px;cursor:pointer;
 }
 
-.question{
-padding:12px;
-font-weight:bold;
-}
+.question{padding:12px;font-weight:bold;}
 
 .answer{
-padding:12px;
-display:none;
-color:#ccc;
+padding:12px;display:none;color:#ccc;
 border-top:1px solid #1e90ff;
 }
-/* FOOTER */
+
 footer{
-text-align:center;
-padding:20px;
-background:#0b1224;
-border-top:2px solid #1e90ff;
+text-align:center;padding:20px;
+background:#0b1224;border-top:2px solid #1e90ff;
 }
 </style>
 </head>
@@ -168,7 +120,7 @@ border-top:2px solid #1e90ff;
 <section id="about">
 <h2>About Us</h2>
 <div class="about">
-Lyzonix Technologies is an IT & HR solutions company providing website development, mobile apps, recruitment, staffing, and digital business solutions. We help businesses grow with smart, reliable, and modern technology services. Our focus is on quality, innovation, and long-term client success through efficient and scalable solutions.
+Lyzonix Technologies is an IT & HR solutions company providing website development, mobile apps, recruitment, staffing, and digital solutions.
 </div>
 </section>
 
@@ -181,7 +133,6 @@ Lyzonix Technologies is an IT & HR solutions company providing website developme
 <div id="it" class="cards">
 <div class="card" onclick="openForm('Web Development')">Web Development</div>
 <div class="card" onclick="openForm('App Development')">App Development</div>
-<div class="card" onclick="openForm('Data Management')">Data Management</div>
 </div>
 
 <div id="hr" class="cards">
@@ -194,38 +145,34 @@ Lyzonix Technologies is an IT & HR solutions company providing website developme
 <h2>Apply Now</h2>
 
 <form id="jobForm">
-<input type="text" id="name" placeholder="Full Name" required>
-<input type="email" id="email" placeholder="Email" required>
-<input type="text" id="phone" placeholder="Phone" required>
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email" required>
+<input type="text" placeholder="Phone" required>
 <input type="text" id="service" readonly>
 <button class="submit">Submit</button>
-</form> 
+</form>
 </section>
+
+<!-- CONTACT FORM -->
+<section>
+<h2>Contact Us</h2>
+
+<form id="contact-form">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Your Work" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
 <section id="faq">
-<h2>Frequently Asked Questions</h2>
+<h2>FAQ</h2>
 
 <div class="faq">
-
 <div class="faq-item">
-<div class="question">What is Lyzonix Technologies?</div>
-<div class="answer">Lyzonix Technologies is an IT & HR solutions company providing digital services like web development, apps, and recruitment solutions.</div>
+<div class="question">What is Lyzonix?</div>
+<div class="answer">IT & HR company providing digital services.</div>
 </div>
-
-<div class="faq-item">
-<div class="question">What services do you offer?</div>
-<div class="answer">We offer website development, mobile app development, HR staffing, recruitment, and data management services.</div>
-</div>
-
-<div class="faq-item">
-<div class="question">How can I apply for services?</div>
-<div class="answer">You can click on any service card, fill the form, and submit your details directly on the website.</div>
-</div>
-
-<div class="faq-item">
-<div class="question">Is login required?</div>
-<div class="answer">Login is optional. It is used for user access and future updates.</div>
-</div>
-
 </div>
 </section>
 
@@ -237,48 +184,41 @@ Lyzonix Technologies is an IT & HR solutions company providing website developme
 <div class="modal" id="loginModal">
 <div class="modal-box">
 <h3>Login</h3>
-<input type="email" id="loginEmail" placeholder="Email">
-<input type="password" id="loginPass" placeholder="Password">
-
+<input type="email" id="loginEmail">
+<input type="password" id="loginPass">
 <button class="btn" onclick="signup()">Signup</button>
 <button class="btn" onclick="login()">Login</button>
-<button class="btn" style="background:red" onclick="closeLogin()">Close</button>
+<button class="btn" onclick="closeLogin()">Close</button>
 </div>
 </div>
 
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-const firebaseConfig = {
-apiKey: "YOUR_API_KEY",
-authDomain: "YOUR_AUTH_DOMAIN",
-projectId: "YOUR_PROJECT_ID"
-};
+<script>
+(function(){
+emailjs.init("rNRTqXw87kcUlr461");
+})();
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+document.getElementById("contact-form")
+.addEventListener("submit", function(e){
+e.preventDefault();
 
-window.signup = function(){
-createUserWithEmailAndPassword(
-auth,
-document.getElementById("loginEmail").value,
-document.getElementById("loginPass").value
-).then(()=>alert("Signup Success"));
-}
-
-window.login = function(){
-signInWithEmailAndPassword(
-auth,
-document.getElementById("loginEmail").value,
-document.getElementById("loginPass").value
-).then(()=>alert("Login Success"));
-}
+emailjs.sendForm(
+"service_uqmihet",
+"template_z8j2yd9",
+this
+).then(()=>{
+alert("Message Sent ✅");
+this.reset();
+},(err)=>{
+alert("Error ❌ "+err.text);
+});
+});
 </script>
 
 <script>
-// UI FUNCTIONS (FULL FIXED)
+// UI
 function showIT(){
 document.getElementById("it").style.display="grid";
 document.getElementById("hr").style.display="none";
@@ -292,13 +232,7 @@ document.getElementById("it").style.display="none";
 function openForm(service){
 document.getElementById("jobForm").style.display="block";
 document.getElementById("service").value=service;
-window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
-
-document.getElementById("jobForm").addEventListener("submit",function(e){
-e.preventDefault();
-alert("Application Submitted Successfully!");
-});
 
 function openLogin(){
 document.getElementById("loginModal").style.display="flex";
@@ -307,57 +241,15 @@ document.getElementById("loginModal").style.display="flex";
 function closeLogin(){
 document.getElementById("loginModal").style.display="none";
 }
-</script>
-  <script>
+
+// FAQ
 document.querySelectorAll(".faq-item").forEach(item=>{
 item.addEventListener("click",()=>{
-let ans = item.querySelector(".answer");
-
-if(ans.style.display==="block"){
-ans.style.display="none";
-}else{
-ans.style.display="block";
-}
-  <title>Lyzonix Contact</title>
-
-  <!-- EmailJS Script -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-</head>
-
-<h2>Contact Us - Lyzonix</h2>
-
-<form id="contact-form">
-  <input type="text" name="name" placeholder="Your Name" required><br><br>
-  
-  <input type="email" name="email" placeholder="Your Email" required><br><br>
-  
-  <textarea name="message" placeholder="Your Work" required></textarea><br><br>
-  
-  <button type="submit">Send Message</button>
-</form>
-
-<script>
-  (function(){
-    emailjs.init("rNRTqXw87kcUlr461");
-  })();
-
-  document.getElementById("contact-form")
-  .addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    emailjs.sendForm(
-      "service_uqmihet",
-      "template_z8j2yd9",
-      this
-    )
-    .then(function() {
-      alert("Message Sent Successfully ✅");
-      document.getElementById("contact-form").reset();
-    }, function(error) {
-      alert("Failed ❌ " + error.text);
-    });
-  });
-  </script>
+let ans=item.querySelector(".answer");
+ans.style.display = ans.style.display==="block" ? "none" : "block";
+});
+});
+</script>
 
 </body>
 </html>
