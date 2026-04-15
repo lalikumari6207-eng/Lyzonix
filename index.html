@@ -37,12 +37,18 @@ window.getDocs=getDocs;
 body{background:#050816;color:white;overflow-x:hidden;}
 canvas{position:fixed;top:0;left:0;z-index:-1;}
 
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-.logo{
-font-size:5rem;font-weight:900;
-background:linear-gradient(90deg,#4f46e5,#22c55e,#06b6d4,#a855f7);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.hero{
+position:relative;
+overflow:hidden;
+}
+
+#logoCanvas{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:700px;
+height:250px;
 }
 .btn{margin-top:25px;padding:12px 28px;border-radius:30px;border:none;cursor:pointer;}
 .btn1{background:#4f46e5;color:white;}
@@ -139,7 +145,7 @@ cursor:pointer;
 </div>
 
 <div class="hero">
-<h1 class="logo">LYZONIX</h1>
+<canvas id="logoCanvas"></canvas>
 <p>IT • HR • Data Analytics • Hiring • Cloud</p>
 <button class="btn btn1" onclick="openForm()">Contact Us</button>
 </div>
@@ -216,6 +222,76 @@ cursor:pointer;
 </div>
 
 <script>
+  const canvas = document.getElementById("logoCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 700;
+canvas.height = 250;
+
+const text = "LYZONIX";
+let particles = [];
+
+class Particle {
+constructor(x,y){
+this.x = Math.random()*canvas.width;
+this.y = Math.random()*canvas.height;
+this.targetX = x;
+this.targetY = y;
+this.size = 2;
+this.ease = 0.06;
+}
+
+update(){
+this.x += (this.targetX - this.x) * this.ease;
+this.y += (this.targetY - this.y) * this.ease;
+}
+
+draw(){
+ctx.fillStyle = "#ffffff";
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+ctx.fill();
+}
+}
+
+// STEP 1: draw text and capture pixels
+function init(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.font = "bold 90px Arial";
+ctx.fillStyle = "white";
+ctx.textAlign = "center";
+ctx.fillText(text, canvas.width/2, canvas.height/2 + 30);
+
+const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+particles = [];
+
+for(let y=0;y<canvas.height;y+=4){
+for(let x=0;x<canvas.width;x+=4){
+const index = (y*canvas.width + x)*4;
+
+if(imageData.data[index+3] > 128){
+particles.push(new Particle(x,y));
+}
+}
+}
+}
+
+// STEP 2: animate particles into text
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.update();
+p.draw();
+});
+
+requestAnimationFrame(animate);
+}
+
+init();
+animate();
 
 /* FAQ toggle */
 document.querySelectorAll(".faq").forEach(f=>{
