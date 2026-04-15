@@ -223,14 +223,64 @@ function closeForm(){popup.style.display="none";}
 
 /* EMAIL + FIREBASE */
 async function sendEmail(){
+
+let nameVal = document.getElementById("name").value;
+let emailVal = document.getElementById("email").value;
+let messageVal = document.getElementById("message").value;
+
+// 🔴 simple validation
+if(!nameVal || !emailVal || !messageVal){
+  alert("Please fill all fields");
+  return;
+}
+
+// 🟡 button loading text
+document.querySelector(".send").innerText = "Sending...";
+
+// 🟢 1. EMAIL SEND
+try{
+await emailjs.send("service_uqmihet","template_fquvwxg",{
+from_name:nameVal,
+from_email:emailVal,
+message:messageVal
+});
+}catch(err){
+console.log("Email error", err);
+}
+
+// 🔵 2. FIREBASE SAVE
+try{
 await addDoc(collection(db,"clients"),{
-name:name.value,
-email:email.value,
-message:message.value,
+name:nameVal,
+email:emailVal,
+message:messageVal,
 time:new Date().toString()
 });
-alert("Message Sent");
-closeForm();
+}catch(err){
+console.log("Firebase error", err);
+}
+
+// 🟢 SUCCESS UI
+document.querySelector(".popup-box").innerHTML = `
+<h3 style="text-align:center;color:green;">✅ Thank You!</h3>
+<p style="text-align:center;">Your form has been submitted successfully.</p>
+`;
+
+// ⏳ AUTO CLOSE
+setTimeout(()=>{
+popup.style.display="none";
+
+// 🔄 RESET FORM BACK
+document.querySelector(".popup-box").innerHTML = `
+<h3>Contact Lyzonix</h3>
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<textarea id="message" placeholder="Message"></textarea>
+<button class="send" onclick="sendEmail()">Send</button>
+<button onclick="closeForm()" style="margin-top:10px;background:red;color:white;border:none;padding:10px;width:100%;border-radius:10px;">Close</button>
+`;
+},2000);
+
 }
 
 /* LOGIN */
