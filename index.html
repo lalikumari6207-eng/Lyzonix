@@ -37,22 +37,43 @@ window.getDocs=getDocs;
 body{background:#050816;color:white;overflow-x:hidden;}
 canvas{position:fixed;top:0;left:0;z-index:-1;}
 
+/* HERO */
 .hero{
 position:relative;
 overflow:hidden;
+text-align:center;
+padding:80px 20px;
 }
 
+/* CANVAS FIX (NO OVERLAP) */
 #logoCanvas{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:700px;
+display:block;
+margin:20px auto;
+width:100%;
+max-width:700px;
 height:250px;
 }
-.btn{margin-top:25px;padding:12px 28px;border-radius:30px;border:none;cursor:pointer;}
-.btn1{background:#4f46e5;color:white;}
 
+/* BUTTON */
+.btn{
+margin-top:25px;
+padding:12px 28px;
+border-radius:30px;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn1{
+background:#4f46e5;
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+       }
+  
 section{padding:90px 10%;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;}
 
@@ -145,7 +166,9 @@ cursor:pointer;
 </div>
 
 <div class="hero">
+  
 <canvas id="logoCanvas"></canvas>
+  
 <p>IT • HR • Data Analytics • Hiring • Cloud</p>
 <button class="btn btn1" onclick="openForm()">Contact Us</button>
 </div>
