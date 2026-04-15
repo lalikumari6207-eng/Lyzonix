@@ -230,7 +230,6 @@ cursor:pointer;
 <button onclick="closeForm()">Close</button>
 </div>
 </div>
-
 <!-- LOGIN -->
 <div class="popup" id="loginPopup">
 <div class="popup-box">
@@ -249,7 +248,10 @@ cursor:pointer;
 </div>
 </div>
 
+
+  
 <script>
+  
   const canvas = document.getElementById("logoCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -287,7 +289,7 @@ function init(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
 ctx.font = "bold 90px Arial";
-ctx.fillStyle = "white";
+ctx.fillStyle = "White and black";
 ctx.textAlign = "center";
 ctx.fillText(text, canvas.width/2, canvas.height/2 + 30);
 
@@ -318,9 +320,9 @@ p.draw();
 requestAnimationFrame(animate);
 }
 
-init();
-animate();
 
+
+  
 /* FAQ toggle */
 document.querySelectorAll(".faq").forEach(f=>{
 f.onclick=()=>f.classList.toggle("active");
