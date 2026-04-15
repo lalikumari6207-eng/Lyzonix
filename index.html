@@ -38,24 +38,27 @@ body{background:#050816;color:white;overflow-x:hidden;}
 canvas{position:fixed;top:0;left:0;z-index:-1;}
 
 /* HERO */
-  .hero{  margin-top:80px; }
-
+  .hero{
 position:relative;
 overflow:hidden;
 text-align:center;
 padding:80px 20px;
+margin-top:80px;
 }
 
-/* CANVAS FIX (NO OVERLAP) */
 #logoCanvas{
 display:block;
 margin:20px auto;
 width:100%;
 max-width:700px;
 height:250px;
-  canvas{
+}
+
+canvas{
 position:fixed;
-  }
+top:0;
+left:0;
+z-index:-1;
 }
 
 /* BUTTON */
@@ -180,6 +183,11 @@ cursor:pointer;
 }
 .answer{display:none;margin-top:10px;color:#cbd5e1;}
 .faq.active .answer{display:block;}
+  section{
+padding:80px 10%;
+position:relative;
+z-index:1;
+  }
 </style>
 </head>
 
