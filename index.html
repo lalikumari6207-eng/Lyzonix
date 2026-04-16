@@ -35,7 +35,13 @@ window.getDocs=getDocs;
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#050816;color:white;overflow-x:hidden;}
-canvas{position:fixed;top:0;left:0;z-index:-1;}
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:-1;
+}
+  
 
 /* HERO */
   .hero{
@@ -144,7 +150,7 @@ border:1px solid rgba(255,255,255,0.1);
   
 /* social icons */
 .social-icons a{
-color:white;
+color:#facc15; /* yellow */
 text-decoration:none;
 font-size:16px;
 margin-right:6px;
@@ -154,6 +160,11 @@ background:rgba(255,255,255,0.08);
 transition:0.3s;
 backdrop-filter: blur(6px);
 }
+
+.social-icons a:hover{
+background:#facc15;
+color:#0f172a; /* dark blue text */
+}
   
   .menu{
 position:relative;
@@ -161,14 +172,20 @@ font-size:28px;
 cursor:pointer;
   }
   
-  
-.dropdown{
+
+  .dropdown{
 display:none;
 position:absolute;
 right:0;
-background:#111;
+background:#0f172a; /* dark blue */
 padding:10px;
 border-radius:10px;
+border:1px solid rgba(250,204,21,0.3);
+}
+
+.dropdown a:hover{
+background:#facc15;
+color:#0f172a;
 }
   
 .menu:hover .dropdown{display:block;}
