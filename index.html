@@ -52,25 +52,29 @@ z-index:-1;
   margin-top:60px;
 }
 
+  
 .hero p{
-  margin-top:15px;
-  font-size:16px;
-  opacity:0.8;
-  letter-spacing:1px;
+margin-top:30px;
+font-size:16px;
+opacity:0.8;
+letter-spacing:1px;
 }
   
 
 #logoCanvas{
 display:block;
-margin:20px auto;
+margin:40px auto;
 width:100%;
 max-width:700px;
 height:250px;
+position:relative;
+z-index:1;
 }
 
 /* BUTTON */
 .btn{
-margin-top:25px;
+margin-top:30px;
+}
 padding:12px 28px;
 border-radius:30px;
 border:none;
@@ -205,6 +209,40 @@ margin:10px 0;
 border-radius:10px;
 cursor:pointer;
 }
+#about{
+background:rgba(255,255,255,0.03);
+border-top:1px solid rgba(255,255,255,0.08);
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+#about h2{
+text-align:center;
+margin-bottom:20px;
+font-size:28px;
+}
+
+.about-text{
+max-width:800px;
+margin:15px auto;
+text-align:center;
+opacity:0.85;
+line-height:1.7;
+}
+
+.about-list{
+max-width:600px;
+margin:20px auto;
+list-style:none;
+padding:0;
+}
+
+.about-list li{
+margin:10px 0;
+padding:10px;
+background:rgba(255,255,255,0.05);
+border-radius:10px;
+}
+  
 .answer{display:none;margin-top:10px;color:#cbd5e1;}
 .faq.active .answer{display:block;}
   section{
@@ -222,6 +260,8 @@ z-index:1;
 <div class="menu-container">
 
   <div class="social-icons">
+
+    <a href="#about">About</a>
     
     <a href="https://youtube.com/@lyzonixtechnologies?si=bXn5gtN9GBKWQoME" target="_blank">▶</a>
     
@@ -241,6 +281,37 @@ z-index:1;
 </div>
 
 <div class="hero">
+
+  <section id="about">
+  <h2>About Us</h2>
+
+  <p class="about-text">
+    Lyzonix Technologies is a modern IT & HR solutions company dedicated to helping businesses grow faster and smarter. 
+    We provide a complete range of services including IT solutions, web & app development, HR management, hiring, and data analytics.
+  </p>
+
+  <p class="about-text">
+    Our goal is simple — to make business operations easy by combining technology and human resource expertise. 
+    Whether you are a startup or an established company, we help you build, manage, and scale your team and digital presence.
+  </p>
+
+  <p class="about-text">
+    We specialize in:
+  </p>
+
+  <ul class="about-list">
+    <li>✔ IT Solutions & Development</li>
+    <li>✔ HR Services & Recruitment</li>
+    <li>✔ Bulk Hiring & Talent Acquisition</li>
+    <li>✔ Data & Business Analytics</li>
+    <li>✔ Cloud Solutions</li>
+  </ul>
+
+  <p class="about-text">
+    📩 To work with us, simply click on the "Contact Us" button and share your requirements. 
+    Our team will connect with you and guide you step-by-step.
+  </p>
+  </section>
   
   
 <canvas id="logoCanvas"></canvas>
