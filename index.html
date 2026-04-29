@@ -41,7 +41,16 @@ top:0;
 left:0;
 z-index:-1;
 }
-  
+  .reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* HERO */
   .hero{
@@ -70,6 +79,8 @@ height:250px;
 position:relative;
 z-index:1;
 }
+
+  
 
 /* BUTTON */
 .btn{
@@ -298,6 +309,7 @@ z-index:1;
 </div>
 
   <section id="about">
+    <section class="reveal">
   <h2>About Us</h2>
 
   <p class="about-text">
@@ -329,6 +341,7 @@ z-index:1;
   
 <!-- SERVICES -->
 <section id="services">
+  <section class="reveal">
 <h2>Services</h2>
 <div class="grid">
 <div class="card" onclick="openForm()">💻 IT Solutions</div>
@@ -343,6 +356,7 @@ z-index:1;
 
 <!-- FAQ -->
 <section id="faq">
+  <section class="reveal">
 <h2>FAQ</h2>
 
 <div class="faq"><div class="question">What services do you provide?</div><div class="answer">IT, HR, Data Analytics& Cloud.</div></div>
@@ -361,6 +375,7 @@ z-index:1;
 </section>
 
   <section id="projects">
+    <section class="reveal">
   <h2 class="title">first Projects</h2>
 
   <div class="project-container">
@@ -409,6 +424,7 @@ z-index:1;
 </section>
 
   <section id="contact">
+    <section class="reveal">
 
     <h1>LYZONIX IT</h1>
 
