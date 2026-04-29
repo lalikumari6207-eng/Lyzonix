@@ -61,6 +61,11 @@ z-index:-1;
   margin-top:60px;
 }
 
+  .hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
   
 .hero p{
 margin-top:30px;
@@ -100,16 +105,20 @@ letter-spacing:1px;
   width: 100px;
   animation: spin 6s linear infinite;
 }
-  .screen::before {
+  .screen {
+  position: relative;
+}
+
+.screen::before {
   content: '';
   position: absolute;
   width: 50%;
   height: 5px;
   background: #4f46e5;
   bottom: -15px;
-  position: relative;
+  left: 25%;
   border-radius: 5px;
-  }
+}
   
 
 #logoCanvas{
@@ -123,7 +132,7 @@ z-index:1;
 }
   .logo-spin {
   width: 120px;
-  {
+  }
 
   
 
@@ -335,8 +344,9 @@ z-index:1;
     </div>
   </div>
 
-</div>
+  <div class="hero">
 <div class="hero-content">
+  
   <img src="file_00000000448c720cbeb484366a6777e6.png" class="logo-spin">
 </div>
 
@@ -385,7 +395,7 @@ z-index:1;
   
   
 <!-- SERVICES -->
-<section id="services reveal">
+<section id="services" class="reveal">
 <h2>Services</h2>
 <div class="grid">
 <div class="card reveal" onclick="openForm()">💻 IT Solutions</div>
