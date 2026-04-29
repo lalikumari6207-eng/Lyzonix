@@ -360,23 +360,104 @@ z-index:1;
 
 </section>
 
-  <form id="reviewForm">
-  <input type="email" placeholder="Your Email" required />
-  
-  <select required>
-    <option value="">Rating</option>
-    <option value="5">⭐ 5</option>
-    <option value="4">⭐ 4</option>
-    <option value="3">⭐ 3</option>
-    <option value="2">⭐ 2</option>
-    <option value="1">⭐ 1</option>
-  </select>
+  <section id="projects">
+  <h2 class="title">My Projects</h2>
 
-  <textarea placeholder="Write your review..." required></textarea>
+  <div class="project-container">
 
-  <button type="submit">Submit</button>
-  </form>
-  
+    <!-- Hospital Projects -->
+    <div class="project-card">
+      <h3>🏥 Healthcare Projects</h3>
+      <p>
+        Developed 3–4 hospital websites with appointment booking system,
+        doctor profiles, services listing and contact forms.
+      </p>
+      <ul>
+        <li>Clean UI & mobile responsive design</li>
+        <li>Patient enquiry system</li>
+        <li>Easy navigation for users</li>
+      </ul>
+    </div>
+
+    <!-- CA Firm Projects -->
+    <div class="project-card">
+      <h3>📊 CA Firm Projects</h3>
+      <p>
+        Built 2–3 professional CA firm websites for tax, GST and financial services.
+      </p>
+      <ul>
+        <li>Corporate professional layout</li>
+        <li>Client enquiry & WhatsApp integration</li>
+        <li>Service showcase section</li>
+      </ul>
+    </div>
+
+    <!-- School Project -->
+    <div class="project-card">
+      <h3>🏫 School Project</h3>
+      <p>
+        Designed a modern school website with admission form, notice board and gallery.
+      </p>
+      <ul>
+        <li>Student & parent friendly UI</li>
+        <li>Responsive design for all devices</li>
+        <li>Admission inquiry system</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#0f172a;
+  color:white;
+}
+
+.title{
+  text-align:center;
+  font-size:32px;
+  margin:40px 0;
+  color:#38bdf8;
+}
+
+.project-container{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+  padding:20px;
+}
+
+.project-card{
+  background:#1e293b;
+  width:300px;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+.project-card:hover{
+  transform:translateY(-10px);
+  background:#334155;
+}
+
+.project-card h3{
+  color:#38bdf8;
+}
+
+.project-card ul{
+  padding-left:20px;
+}
+
+.project-card ul li{
+  margin:5px 0;
+}
+</style>
+
 <footer style="text-align:center;padding:40px;background:#020617;">
   <p style="opacity:0.7;">© 2026 Lyzonix Technologies. All Rights Reserved.</p>
   <p style="margin-top:8px;font-weight:600;">CEO & Founder: Lali Kumari</p>
