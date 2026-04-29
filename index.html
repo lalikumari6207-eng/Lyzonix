@@ -309,7 +309,6 @@ z-index:1;
 </div>
 
   <section id="about">
-    <section class="reveal">
   <h2>About Us</h2>
 
   <p class="about-text">
@@ -341,7 +340,6 @@ z-index:1;
   
 <!-- SERVICES -->
 <section id="services">
-  <section class="reveal">
 <h2>Services</h2>
 <div class="grid">
 <div class="card" onclick="openForm()">💻 IT Solutions</div>
@@ -356,7 +354,6 @@ z-index:1;
 
 <!-- FAQ -->
 <section id="faq">
-  <section class="reveal">
 <h2>FAQ</h2>
 
 <div class="faq"><div class="question">What services do you provide?</div><div class="answer">IT, HR, Data Analytics& Cloud.</div></div>
@@ -375,7 +372,6 @@ z-index:1;
 </section>
 
   <section id="projects">
-    <section class="reveal">
   <h2 class="title">first Projects</h2>
 
   <div class="project-container">
@@ -424,7 +420,6 @@ z-index:1;
 </section>
 
   <section id="contact">
-    <section class="reveal">
 
     <h1>LYZONIX IT</h1>
 
@@ -553,6 +548,19 @@ body{
 
   
 <script>
+window.addEventListener("scroll", function () {
+  let reveals = document.querySelectorAll(".reveal");
+
+  for (let i = 0; i < reveals.length; i++) {
+    let windowHeight = window.innerHeight;
+    let elementTop = reveals[i].getBoundingClientRect().top;
+    let elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+});
   
   const canvas = document.getElementById("logoCanvas");
 const ctx = canvas.getContext("2d");
