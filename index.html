@@ -68,7 +68,50 @@ font-size:16px;
 opacity:0.8;
 letter-spacing:1px;
 }
-  @keyframes spin {
+  /* layout */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* SCREEN LOOK */
+.screen {
+  width: 180px;
+  height: 180px;
+  background: #020617;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* glow + border */
+  box-shadow: 
+    0 0 20px rgba(79,70,229,0.6),
+    inset 0 0 15px rgba(79,70,229,0.3);
+
+  border: 2px solid rgba(79,70,229,0.4);
+}
+
+/* rotating logo */
+.logo-spin {
+  width: 100px;
+  animation: spin 6s linear infinite;
+}
+  .screen::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  background: #4f46e5;
+  bottom: -15px;
+  border-radius: 10px;
+  }
+
+/* spin */
+@keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
   }
@@ -301,6 +344,8 @@ z-index:1;
 
 </div>
 <div class="hero-content">
+  <div class="hero-content">
+    <div class= "screen">
   <img src="file_000000007f087208832509e872f86006.png" class="logo-spin">
 </div>
 
