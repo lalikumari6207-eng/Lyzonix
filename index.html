@@ -213,6 +213,69 @@ backdrop-filter: blur(10px);
 border:1px solid rgba(255,255,255,0.1);
   }
 
+  #team{
+  text-align:center;
+  padding:100px 20px;
+}
+
+/* BIG HEADING */
+.team-heading{
+  font-size:60px;
+  font-weight:700;
+  margin-bottom:50px;
+  letter-spacing:3px;
+}
+
+/* CARD */
+.team-card{
+  background:rgba(255,255,255,0.05);
+  display:inline-block;
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+}
+
+/* IMAGE */
+.team-img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:15px;
+  border:3px solid #4f46e5;
+}
+
+/* NAME */
+.team-card h3{
+  margin:5px 0;
+}
+
+/* ROLE */
+.role{
+  opacity:0.7;
+  font-size:14px;
+}
+
+/* SOCIAL LINKS */
+.team-links{
+  margin-top:15px;
+}
+
+.team-links a{
+  text-decoration:none;
+  margin:0 5px;
+  padding:6px 10px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.08);
+  color:#facc15;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.team-links a:hover{
+  background:#facc15;
+  color:#0f172a;
+}
 
   
 /* social icons */
@@ -527,6 +590,24 @@ z-index:1;
 
   </div>
 </section>
+  <section id="team">
+  <h1 class="team-heading">OUR TEAM</h1>
+
+  <div class="team-card reveal">
+    
+    <img src="your-photo.jpg" alt="Founder" class="team-img">
+
+    <h3>Lali Kumari</h3>
+    <p class="role">CEO MD & Founder</p>
+
+    <div class="team-links">
+      <a href="https://linkedin.com" target="_blank">in</a>
+      <a href="https://youtube.com" target="_blank">▶</a>
+      <a href="https://github.com" target="_blank">GH</a>
+    </div>
+
+  </div>
+  </section>
 
   <section id="contact reveal">
 
