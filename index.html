@@ -79,6 +79,11 @@ height:250px;
 position:relative;
 z-index:1;
 }
+  .logo-spin {
+  width: 120px;
+  animation: spin 6s linear infinite;
+  filter: drop-shadow(0 0 15px #4f46e5);
+  }
 
   
 
@@ -292,7 +297,15 @@ z-index:1;
 
 </div>
 
-<div class="hero">
+<div class="hero-content">
+  
+  <!-- LEFT SIDE LOGO -->
+  <img src="file_000000007f087208832509e872f86006.png" class="logo-spin">
+
+  <!-- center PARTICLE TEXT -->
+  <canvas id="logoCanvas"></canvas>
+
+</div>
 
   
   
