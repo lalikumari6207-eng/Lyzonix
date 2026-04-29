@@ -255,18 +255,31 @@ background:#facc15;
 color:#0f172a;
 }
 
-  function toggleMenu(){
-    let dropdown = document.querySelector(".dropdown");
-    let icon = document.getElementById("menuIcon");
+  .dropdown{
+  display:none;
+}
 
-    if(dropdown.style.display === "block"){
-        dropdown.style.display = "none";
-        icon.innerHTML = "☰";
-    } else {
-        dropdown.style.display = "block";
-        icon.innerHTML = "✖";
-    }
-  }
+.dropdown.active{
+  display:block;
+}
+  #story{
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+#story h2{
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.story-text{
+  max-width: 800px;
+  margin: 15px auto;
+  line-height: 1.7;
+  opacity: 0.85;
+}
   
 /* FAQ */
 .faq{
@@ -317,6 +330,7 @@ padding:80px 10%;
 position:relative;
 z-index:1;
   }
+  
 </style>
   <meta name="google-site-verification" content="wyPJCq7rLL8e9uipEopt-ItztYq84U0DS2bgwVMjCx8" />
 </head>
@@ -398,6 +412,40 @@ z-index:1;
     Our team will connect with you and guide you step-by-step.
   </p>
   </section>
+
+  <section id="story">
+  <h2>Our Story</h2>
+
+  <p class="story-text reveal">
+    The idea of Lyzonix Technologies began back in 2017, when we first got introduced to the world of IT. 
+    At that time, we were just curious learners with a vision to do something meaningful in technology.
+  </p>
+
+  <p class="story-text reveal">
+    Along with our founder and co-founder, we decided to give it a try — even without officially starting a company. 
+    We began by connecting with local people, discussing ideas, and exploring opportunities. 
+    In the beginning, many people doubted us and thought it wouldn’t work.
+  </p>
+
+  <p class="story-text reveal">
+    Despite the challenges, we stayed consistent, kept learning, and continued improving our skills in development, 
+    analytics, and real-world problem solving.
+  </p>
+
+  <p class="story-text reveal">
+    In 2024, we achieved a major milestone by getting our first client. That moment marked the real beginning 
+    of our professional journey.
+  </p>
+
+  <p class="story-text reveal">
+    From 2024 to 2026, we have successfully worked with 12+ clients and delivered 50+ projects across different domains.
+  </p>
+
+  <p class="story-text reveal">
+    Today, Lyzonix Technologies stands as a growing IT solutions company, committed to helping businesses build, 
+    grow, and succeed in the digital world.
+  </p>
+  </section>
   
   
 <!-- SERVICES -->
@@ -431,7 +479,6 @@ z-index:1;
 <div class="faq"><div class="question reveal">Do you provide cloud?</div><div class="answer">Yes cloud solutions.</div></div>
 <div class="faq"><div class="question reveal">Internships?</div><div class="answer">Yes available.</div></div>
 
-</section>
 
   <section id="projects reveal">
   <h2 class="title">first Projects</h2>
@@ -692,6 +739,18 @@ p.draw();
 requestAnimationFrame(animate);
 }
 
+  function toggleMenu(){
+  let dropdown = document.querySelector(".dropdown");
+  let icon = document.getElementById("menuIcon");
+
+  if(dropdown.style.display === "block"){
+      dropdown.style.display = "none";
+      icon.innerHTML = "☰";
+  } else {
+      dropdown.style.display = "block";
+      icon.innerHTML = "✖";
+  }
+  }
 
 
   
