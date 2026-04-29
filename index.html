@@ -254,15 +254,19 @@ border:1px solid rgba(250,204,21,0.3);
 background:#facc15;
 color:#0f172a;
 }
-  
-.menu:hover .dropdown{display:block;}
-.dropdown a{
-display:block;
-color:white;
-padding:10px;
-text-decoration:none;
-}
 
+  function toggleMenu(){
+    let dropdown = document.querySelector(".dropdown");
+    let icon = document.getElementById("menuIcon");
+
+    if(dropdown.style.display === "block"){
+        dropdown.style.display = "none";
+        icon.innerHTML = "☰";
+    } else {
+        dropdown.style.display = "block";
+        icon.innerHTML = "✖";
+    }
+  }
   
 /* FAQ */
 .faq{
@@ -334,7 +338,8 @@ z-index:1;
   
   
 
-  <div class="menu">☰
+  <div class="menu" onclick="toggleMenu()">
+    <span id="menuIcon">☰</span>
     <div class="dropdown">
       <a href="#faq">FAQ</a>
       <a href="#services">Services</a>
