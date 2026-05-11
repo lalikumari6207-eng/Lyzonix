@@ -873,25 +873,48 @@ z-index:1;
 
  </section>
 
-  <section id="contact reveal">
+  <!-- CLIENT FORM SECTION -->
 
-    <h1>LYZONIX IT</h1>
+<section id="client-form">
 
-    <h2>Contact :-</h2>
+  <h2 class="form-title">Client Requirement Form</h2>
 
-    <p>
-      Email :- 
-      <a href="mailto:lyzonixTechnologies@gmail.com">
-        lyzonixTechnologies@gmail.com
-      </a>
-    </p>
+  <div class="client-form-box">
 
-    <p>
-      Phone :-
-      </a>
-    </p>
+    <input type="text" id="name" placeholder="Full Name">
+
+    <select id="service">
+
+      <option value="">Select Service</option>
+
+      <option>IT Solutions</option>
+
+      <option>Web Development</option>
+
+      <option>App Development</option>
+
+      <option>Data Analytics</option>
+
+      <option>Business Analytics</option>
+
+      <option>Recruitment Process</option>
+
+      <option>Cloud Services</option>
+
+    </select>
+
+    <input type="email" id="email" placeholder="Email Address">
+
+    <input type="text" id="contact" placeholder="Contact Number (Optional)">
+
+    <textarea id="message" placeholder="Describe Your Requirement"></textarea>
+
+    <button onclick="submitClientForm()">
+      Submit Requirement
+    </button>
 
   </div>
+
 </section>
 
 <style>
@@ -937,6 +960,81 @@ body{
 <footer style="text-align:center;padding:40px;background:#020617;">
   <p style="opacity:0.7;">© 2025 Lyzonix Technologies. All Rights Reserved.</p>
 </footer>
+/* CLIENT FORM */
+
+#client-form{
+  padding:100px 10%;
+  background:#020617;
+  text-align:center;
+}
+
+.form-title{
+  font-size:38px;
+  margin-bottom:40px;
+}
+
+.client-form-box{
+  max-width:700px;
+  margin:auto;
+  background:rgba(255,255,255,0.05);
+  padding:35px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+}
+
+.client-form-box input,
+.client-form-box select,
+.client-form-box textarea{
+
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+
+  border:none;
+  outline:none;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,0.08);
+
+  color:white;
+
+  font-size:15px;
+}
+
+.client-form-box textarea{
+  height:140px;
+  resize:none;
+}
+
+.client-form-box button{
+
+  width:100%;
+  padding:14px;
+
+  border:none;
+  border-radius:14px;
+
+  background:#4f46e5;
+  color:white;
+
+  font-size:16px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.client-form-box button:hover{
+  transform:scale(1.02);
+  background:#5b52ff;
+}
+
+.client-form-box select option{
+  color:black;
+}
   
 <!-- CONTACT -->
 <div class="popup" id="popup">
@@ -1065,7 +1163,55 @@ requestAnimationFrame(animate);
   }
   }
 
+<script>
 
+async function submitClientForm(){
+
+  const name = document.getElementById("name").value;
+  const service = document.getElementById("service").value;
+  const email = document.getElementById("email").value;
+  const contact = document.getElementById("contact").value;
+  const message = document.getElementById("message").value;
+
+  if(name==="" || service==="" || email===""){
+    alert("Please fill all required fields");
+    return;
+  }
+
+  try{
+
+    await addDoc(collection(db,"clients"),{
+
+      name:name,
+      service:service,
+      email:email,
+      contact:contact,
+      message:message,
+      time:new Date().toLocaleString()
+
+    });
+
+    alert("Requirement Submitted Successfully");
+
+    document.getElementById("name").value="";
+    document.getElementById("service").value="";
+    document.getElementById("email").value="";
+    document.getElementById("contact").value="";
+    document.getElementById("message").value="";
+
+  }
+
+  catch(error){
+
+    console.log(error);
+
+    alert("Something went wrong");
+
+  }
+
+}
+
+</script>
   
 /* FAQ toggle */
 document.querySelectorAll(".faq").forEach(f=>{
