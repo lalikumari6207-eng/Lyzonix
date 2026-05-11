@@ -4,7 +4,7 @@
 <link rel="icon" href="logo.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lyzonix IT </title>
+<title>Lyzonix Technologies </title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -41,16 +41,17 @@ top:0;
 left:0;
 z-index:-1;
 }
-  .reveal {
-  opacity: 0;
-  transform: translateX(-120px);
-  transition: all 0.9s ease;
+.reveal{
+  opacity:0;
+  transform:translateY(40px) scale(0.9);
+  transition:all 1s ease;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateX(0);
+.reveal.active{
+  opacity:1;
+  transform:translateY(0) scale(1);
 }
+  
 
 /* HERO */
   .hero{
@@ -343,6 +344,137 @@ color:#0f172a;
   line-height: 1.7;
   opacity: 0.85;
 }
+
+  /* FOUNDER SECTION */
+#team{
+  padding:100px 10%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.founder-card{
+  width:100%;
+  max-width:950px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:25px;
+  padding:40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+  backdrop-filter:blur(10px);
+
+  /* ANIMATION */
+  animation: zoomSide 1.2s ease;
+}
+
+/* LEFT SIDE */
+.founder-info{
+  flex:1;
+}
+
+.small-role{
+  font-size:13px;
+  letter-spacing:3px;
+  opacity:0.5;
+  margin-bottom:10px;
+  font-weight:300;
+}
+
+.founder-info h2{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.quote{
+  font-size:15px;
+  line-height:1.8;
+  opacity:0.8;
+  max-width:420px;
+}
+
+/* IMAGE */
+.founder-image{
+  flex:0.8;
+  display:flex;
+  justify-content:center;
+}
+
+.team-img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+  border:2px solid #4f46e5;
+
+  box-shadow:
+    0 0 25px rgba(79,70,229,0.4);
+
+  transition:0.4s;
+}
+
+.team-img:hover{
+  transform:scale(1.05);
+}
+
+/* SOCIAL */
+.team-links{
+  margin-top:25px;
+}
+
+.team-links a{
+  text-decoration:none;
+  margin-right:10px;
+  padding:8px 12px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.08);
+  color:#facc15;
+  transition:0.3s;
+}
+
+.team-links a:hover{
+  background:#facc15;
+  color:#0f172a;
+}
+
+/* ANIMATION */
+@keyframes zoomSide{
+  from{
+    opacity:0;
+    transform:translateX(-120px) scale(0.8);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0) scale(1);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .founder-card{
+    flex-direction:column-reverse;
+    text-align:center;
+    padding:30px 20px;
+  }
+
+  .founder-info h2{
+    font-size:32px;
+  }
+
+  .quote{
+    margin:auto;
+  }
+
+  .team-img{
+    width:180px;
+    height:180px;
+  }
+}
   
 /* FAQ */
 .faq{
@@ -590,24 +722,37 @@ z-index:1;
 
   </div>
 </section>
-  <section id="team">
-  <h1 class="team-heading">who build Lyzonix </h1>
+ <section id="team">
 
-  <div class="team-card reveal">
-    
-    <img src="1775047476034~2.png" alt="Founder" class="team-img">
+  <div class="founder-card reveal">
 
-    <h3>Lali Kumari</h3>
-    <p class="role">CEO MD & Founder</p>
+    <!-- LEFT CONTENT -->
+    <div class="founder-info">
+      
+      <p class="small-role">/ MD & CEO</p>
 
-    <div class="team-links">
-      <a href="https://www.linkedin.com/in/lali-bhardwaj-ceo" target="_blank">in</a>
-      <a href="https://youtube.com/@explorewithlali04?si=dKjeLTVNhoQGR9Gr" target="_blank">▶</a>
-      <a href="https://lalikumari6207-eng.github.io/Lyzonix/" target="_blank">GH</a>
+      <h2>Lali Kumari</h2>
+
+      <p class="quote">
+        “Building dreams with technology, consistency & vision.”
+      </p>
+
+      <div class="team-links">
+        <a href="https://www.linkedin.com/in/lali-bhardwaj-ceo" target="_blank">in</a>
+        <a href="https://youtube.com/@explorewithlali04?si=dKjeLTVNhoQGR9Gr" target="_blank">▶</a>
+        <a href="https://lalikumari6207-eng.github.io/Lyzonix/" target="_blank">GH</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="founder-image">
+      <img src="1775047476034~2.png" alt="Founder" class="team-img">
     </div>
 
   </div>
-  </section>
+
+ </section>
 
   <section id="contact reveal">
 
