@@ -74,6 +74,41 @@ font-size:16px;
 opacity:0.8;
 letter-spacing:1px;
 }
+  /* FLOATING EMAIL BUTTON */
+
+.email-float{
+  position:fixed;
+  right:-220px;
+  top:50%;
+  transform:translateY(-50%);
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:white;
+  padding:14px 22px;
+  border-radius:14px 0 0 14px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 0 20px rgba(79,70,229,0.5);
+  transition:0.6s ease;
+}
+
+/* SCROLL PE SHOW */
+.email-float.show{
+  right:0;
+}
+
+/* HOVER */
+.email-float:hover{
+  transform:translateY(-50%) scale(1.05);
+}
+
+.email-icon{
+  font-size:20px;
+}
+  
   /* layout */
 .hero-content {
   display:flex;
@@ -805,6 +840,16 @@ z-index:1;
     grow, and succeed in the digital world.
   </p>
   </section>
+  <!-- FLOATING EMAIL -->
+
+<a href="mailto:lyzonixtechnologies@gmail.com"
+   class="email-float"
+   id="emailFloat">
+
+   <span class="email-icon">✉</span>
+   <span>Email Us</span>
+
+</a>
   
   
 <!-- SERVICES -->
@@ -1309,6 +1354,20 @@ async function submitClientForm(){
   }
 
 }
+  /* EMAIL FLOAT SHOW ON SCROLL */
+
+window.addEventListener("scroll",()=>{
+
+  const emailBtn=document.getElementById("emailFloat");
+
+  if(window.scrollY > 400){
+    emailBtn.classList.add("show");
+  }else{
+    emailBtn.classList.remove("show");
+  }
+
+});
+  
 
 </script>
 
