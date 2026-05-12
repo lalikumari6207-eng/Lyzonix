@@ -799,6 +799,160 @@ z-index:1;
   opacity:0.8;
   font-size:16px;
 }
+/* TYPING TAGLINE */
+
+#typing-tagline{
+  position:relative;
+  padding:60px 10%;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* TYPING TEXT */
+
+.typing-text{
+
+  display:inline-block;
+
+  font-size:34px;
+  font-weight:700;
+
+  background:linear-gradient(
+    90deg,
+    #ff0080,
+    #7928ca,
+    #0070f3,
+    #00c6ff,
+    #00ff94,
+    #ffcc00
+  );
+
+  background-size:400%;
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  animation:
+    gradientMove 8s linear infinite,
+    typing 5s steps(55,end),
+    blink .8s infinite;
+
+  white-space:nowrap;
+  overflow:hidden;
+
+  border-right:4px solid #fff;
+
+  width:0;
+}
+
+/* TYPING EFFECT */
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+/* CURSOR BLINK */
+
+@keyframes blink{
+  50%{
+    border-color:transparent;
+  }
+}
+
+/* GRADIENT ANIMATION */
+
+@keyframes gradientMove{
+
+  0%{
+    background-position:0%;
+  }
+
+  100%{
+    background-position:400%;
+  }
+}
+
+/* FLOATING COLOR BALLS */
+
+.floating-colors span{
+
+  position:absolute;
+
+  width:120px;
+  height:120px;
+
+  border-radius:50%;
+
+  filter:blur(45px);
+
+  opacity:0.5;
+
+  animation:float 10s infinite alternate;
+}
+
+.floating-colors span:nth-child(1){
+  background:#ff0080;
+  top:10%;
+  left:5%;
+}
+
+.floating-colors span:nth-child(2){
+  background:#7928ca;
+  top:60%;
+  left:20%;
+}
+
+.floating-colors span:nth-child(3){
+  background:#0070f3;
+  top:20%;
+  right:10%;
+}
+
+.floating-colors span:nth-child(4){
+  background:#00ff94;
+  bottom:10%;
+  right:20%;
+}
+
+.floating-colors span:nth-child(5){
+  background:#ffcc00;
+  top:40%;
+  left:45%;
+}
+
+.floating-colors span:nth-child(6){
+  background:#00c6ff;
+  bottom:20%;
+  left:60%;
+}
+
+/* FLOAT ANIMATION */
+
+@keyframes float{
+
+  from{
+    transform:translateY(-20px) translateX(-10px);
+  }
+
+  to{
+    transform:translateY(20px) translateX(20px);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .typing-text{
+    font-size:18px;
+    white-space:normal;
+    border-right:none;
+    width:100%;
+    animation:gradientMove 8s linear infinite;
+  }
+
+}
   
 </style>
   <meta name="google-site-verification" content="wyPJCq7rLL8e9uipEopt-ItztYq84U0DS2bgwVMjCx8" />
@@ -847,8 +1001,24 @@ z-index:1;
   
   
 
-  
-       <p>IT • Data Analytics • Cloud</p>
+  <!-- TYPING TAGLINE -->
+
+<section id="typing-tagline">
+
+  <h1 class="typing-text">
+    Building the future with creativity, technology, and ideas that matter.
+  </h1>
+
+  <div class="floating-colors">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</section>
   
 <button class="btn btn1" onclick="openForm()">Contact Us</button>
 </div>
