@@ -808,11 +808,9 @@ z-index:1;
   overflow:hidden;
 }
 
-/* TYPING TEXT */
+/* TEXT */
 
 .typing-text{
-
-  display:inline-block;
 
   font-size:34px;
   font-weight:700;
@@ -832,35 +830,36 @@ z-index:1;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 
-  animation:
-    gradientMove 8s linear infinite,
-    typing 5s steps(55,end),
-    blink .8s infinite;
+  animation:gradientMove 8s linear infinite;
 
-  white-space:nowrap;
-  overflow:hidden;
-
-  border-right:4px solid #fff;
-
-  width:0;
+  position:relative;
+  display:inline-block;
 }
 
-/* TYPING EFFECT */
+/* CURSOR */
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+.typing-text::after{
+
+  content:"|";
+
+  color:white;
+
+  margin-left:4px;
+
+  animation:blink .7s infinite;
 }
 
 /* CURSOR BLINK */
 
 @keyframes blink{
+
   50%{
-    border-color:transparent;
+    opacity:0;
   }
+
 }
 
-/* GRADIENT ANIMATION */
+/* GRADIENT MOVE */
 
 @keyframes gradientMove{
 
@@ -871,9 +870,10 @@ z-index:1;
   100%{
     background-position:400%;
   }
+
 }
 
-/* FLOATING COLOR BALLS */
+/* FLOATING COLORS */
 
 .floating-colors span{
 
@@ -927,7 +927,7 @@ z-index:1;
   left:60%;
 }
 
-/* FLOAT ANIMATION */
+/* FLOAT */
 
 @keyframes float{
 
@@ -938,6 +938,7 @@ z-index:1;
   to{
     transform:translateY(20px) translateX(20px);
   }
+
 }
 
 /* MOBILE */
@@ -945,11 +946,8 @@ z-index:1;
 @media(max-width:768px){
 
   .typing-text{
-    font-size:18px;
-    white-space:normal;
-    border-right:none;
-    width:100%;
-    animation:gradientMove 8s linear infinite;
+    font-size:20px;
+    line-height:1.6;
   }
 
 }
