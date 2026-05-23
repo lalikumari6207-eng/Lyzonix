@@ -1,19 +1,1256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" href="logo.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lyzonix Technologies </title>
+<meta name="description" content="Lyzonix Technologies — AI-powered IT solutions, web & app development, data analytics, cloud services. Building the future with creativity and technology.">
+<meta name="keywords" content="IT solutions, web development, app development, data analytics, cloud services, AI, Lyzonix Technologies">
+<meta name="google-site-verification" content="wyPJCq7rLL8e9uipEopt-ItztYq84U0DS2bgwVMjCx8">
+<meta property="og:title" content="Lyzonix Technologies — Future-Forward IT Solutions">
+<meta property="og:description" content="We build, automate, and scale digital products with AI and modern technology.">
+<meta property="og:type" content="website">
+<title>Lyzonix Technologies — Future-Forward IT Solutions</title>
+<link rel="icon" href="https://lyzonixtechnologies.online/file_000000000b94722f81ad764f6532f453~2.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root {
+  --bg: #03040a;
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+  --accent: #5eead4;
+  --accent2: #818cf8;
+  --accent3: #f472b6;
+  --text: #f1f5f9;
+  --muted: rgba(241,245,249,0.55);
+  --glow: 0 0 40px rgba(94,234,212,0.15);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: all 0.18s ease;
+  opacity: 0.6;
+}
+body:hover .cursor-ring { opacity: 1; }
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+/* ── BG GRID ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(94,234,212,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94,234,212,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── AMBIENT ORBS ── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+.orb1 { width:500px;height:500px;background:rgba(94,234,212,0.07);top:-100px;right:-100px; animation-delay:0s; }
+.orb2 { width:400px;height:400px;background:rgba(129,140,248,0.07);bottom:-100px;left:-100px; animation-delay:-10s; }
+.orb3 { width:300px;height:300px;background:rgba(244,114,182,0.05);top:50%;left:40%; animation-delay:-5s; }
+
+@keyframes drift { from{transform:translate(0,0) scale(1)} to{transform:translate(40px,30px) scale(1.1)} }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 5%;
+  background: rgba(3,4,10,0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-logo span {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.nav-links a:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+  color: var(--bg) !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  border-radius: 10px !important;
+}
+.nav-cta:hover { transform: scale(1.04); box-shadow: 0 0 20px rgba(94,234,212,0.3); }
+
+.hamburger {
+  display: none;
+  flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+}
+.hamburger span { width:22px;height:2px;background:var(--text);border-radius:2px;transition:0.3s; }
+
+/* ── HERO ── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 5% 80px;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(94,234,212,0.08);
+  border: 1px solid rgba(94,234,212,0.2);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 12px; font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease forwards;
+}
+.badge-dot {
+  width:6px;height:6px;background:var(--accent);border-radius:50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.9s 0.1s ease forwards;
+  opacity: 0;
+}
+
+.hero-title .line1 { display: block; }
+.hero-title .line2 {
+  display: block;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  background-size: 300%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: gradShift 6s linear infinite, fadeUp 0.9s 0.1s ease forwards;
+}
+@keyframes gradShift { 0%{background-position:0%} 100%{background-position:300%} }
+
+.hero-sub {
+  max-width: 560px;
+  margin: 0 auto 40px;
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+  animation: fadeUp 0.9s 0.2s ease forwards;
+  opacity: 0;
+}
+
+.hero-actions {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.9s 0.3s ease forwards;
+  opacity: 0;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #030410;
+  font-weight: 700; font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 30px rgba(94,234,212,0.2);
+}
+.btn-primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 40px rgba(94,234,212,0.35); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 500; font-size: 15px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none; cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+
+/* ── HERO STATS ── */
+.hero-stats {
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; margin-top: 70px;
+  animation: fadeUp 0.9s 0.4s ease forwards;
+  opacity: 0;
+}
+.hero-stat { text-align: center; }
+.hero-stat strong {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 36px; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-stat span { font-size: 13px; color: var(--muted); }
+.stat-divider { width: 1px; height: 40px; background: var(--border); }
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  overflow: hidden;
+  padding: 18px 0;
+  background: rgba(94,234,212,0.04);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+.marquee-track {
+  display: flex; gap: 60px;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase; letter-spacing: 2px;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 10px;
+}
+.marquee-item::before { content:'◆'; color:var(--accent); font-size:8px; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SECTIONS ── */
+section { position: relative; z-index: 1; padding: 100px 5%; }
+
+.section-eyebrow {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800; line-height: 1.15;
+  margin-bottom: 18px;
+}
+.section-desc {
+  color: var(--muted); font-size: 16px; line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ── SERVICES ── */
+#services { background: transparent; }
+
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .section-desc { margin: 0 auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(94,234,212,0.06), transparent);
+  opacity: 0;
+  transition: 0.4s;
+}
+.service-card:hover { transform: translateY(-8px); border-color: rgba(94,234,212,0.3); box-shadow: var(--glow); }
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, rgba(94,234,212,0.15), rgba(129,140,248,0.1));
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(94,234,212,0.15);
+}
+.service-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 10px;
+}
+.service-card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+.service-tag {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 4px 10px;
+  background: rgba(94,234,212,0.08);
+  border: 1px solid rgba(94,234,212,0.15);
+  border-radius: 6px;
+  font-size: 11px; color: var(--accent);
+  font-weight: 600; letter-spacing: 1px;
+}
+  /* ── AI SECTION ── */
+#ai-section {
+  background: linear-gradient(135deg, rgba(94,234,212,0.04), rgba(129,140,248,0.04));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.ai-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px; align-items: center;
+}
+.ai-visual {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 380px;
+}
+.ai-core {
+  width: 180px; height: 180px;
+  background: radial-gradient(circle at center, rgba(94,234,212,0.2), rgba(129,140,248,0.1), transparent 70%);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  animation: corePulse 4s ease-in-out infinite;
+}
+@keyframes corePulse {
+  0%,100%{box-shadow:0 0 40px rgba(94,234,212,0.2)}
+  50%{box-shadow:0 0 80px rgba(94,234,212,0.4),0 0 120px rgba(129,140,248,0.2)}
+}
+.ai-core-inner {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+  animation: rotateSlow 8s linear infinite;
+}
+@keyframes rotateSlow { to{transform:rotate(360deg)} }
+
+/* orbit rings */
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(94,234,212,0.15);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.orbit1 { width:240px;height:240px; animation: spin 12s linear infinite; }
+.orbit2 { width:320px;height:320px; animation: spin 18s linear infinite reverse; }
+.orbit3 { width:400px;height:400px; animation: spin 25s linear infinite; }
+@keyframes spin { to{transform:translate(-50%,-50%) rotate(360deg)} }
+
+.orbit-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--accent);
+}
+.orbit-dot2 { background: var(--accent2); box-shadow: 0 0 10px var(--accent2); }
+.orbit-dot3 { background: var(--accent3); box-shadow: 0 0 10px var(--accent3); }
+
+.ai-feature-pills {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;
+}
+.ai-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 7px 14px;
+  font-size: 13px; font-weight: 500;
+}
+.ai-pill-dot { width:6px;height:6px;border-radius:50%; }
+.ai-pill-dot.teal { background:var(--accent); }
+.ai-pill-dot.indigo { background:var(--accent2); }
+.ai-pill-dot.pink { background:var(--accent3); }
+
+/* ── EXPERIENCE / WORKS ── */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.work-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s;
+}
+.work-card:hover { border-color: rgba(129,140,248,0.3); transform: translateY(-6px); box-shadow: 0 0 30px rgba(129,140,248,0.1); }
+.work-emoji { font-size: 32px; margin-bottom: 16px; display: block; }
+.work-card h3 { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px; }
+.work-card p { color:var(--muted); font-size:14px; line-height:1.7; }
+
+/* ── STORY ── */
+#story { background: transparent; }
+.story-inner {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.story-timeline {
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 50px; text-align: left;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-year {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--accent);
+  padding-top: 3px;
+}
+.timeline-content h4 { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; margin-bottom:6px; }
+.timeline-content p { color:var(--muted); font-size:14px; line-height:1.7; }
+
+/* ── FOUNDER ── */
+#team {
+  background: linear-gradient(135deg, rgba(129,140,248,0.03), rgba(94,234,212,0.03));
+  border-top: 1px solid var(--border);
+}
+.founder-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 60px; align-items: center;
+  max-width: 900px; margin: 0 auto;
+}
+.founder-photo {
+  position: relative;
+}
+.founder-photo img {
+  width: 220px; height: 260px;
+  object-fit: cover; border-radius: 20px;
+  border: 1px solid var(--border);
+  display: block;
+}
+.founder-photo::after {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), transparent);
+  z-index: -1;
+  opacity: 0.4;
+}
+.founder-info .section-eyebrow { margin-bottom: 8px; }
+.founder-info h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800; margin-bottom: 18px;
+}
+.founder-quote {
+  font-size: 15px; line-height: 1.8;
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.social-links { display:flex; gap:10px; flex-wrap:wrap; }
+.social-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px; font-weight: 600;
+  transition: all 0.3s;
+}
+.social-link:hover { background: rgba(94,234,212,0.1); border-color: rgba(94,234,212,0.3); color: var(--accent); }
+
+/* ── FAQ ── */
+#faq { background: transparent; }
+.faq-inner { max-width: 720px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0;
+  background: transparent; border: none; cursor: pointer;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 500;
+  text-align: left;
+  gap: 16px;
+  transition: color 0.3s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-icon {
+  width:28px;height:28px;min-width:28px;
+  border: 1px solid var(--border);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px; transition:0.3s;
+}
+.faq-item.open .faq-icon { background: rgba(94,234,212,0.1); border-color: var(--accent); color: var(--accent); transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 0 20px;
+  color: var(--muted);
+  font-size: 14px; line-height: 1.75;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ── CONTACT FORM ── */
+#contact {
+  background: linear-gradient(135deg, rgba(94,234,212,0.03), rgba(129,140,248,0.03));
+  border-top: 1px solid var(--border);
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 70px; align-items: start;
+}
+.contact-info h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 38px; font-weight: 800; margin-bottom: 18px;
+}
+.contact-info p { color: var(--muted); font-size: 15px; line-height: 1.75; margin-bottom: 32px; }
+.contact-item {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 18px;
+}
+.contact-item-icon {
+  width:42px;height:42px;
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  display:flex;align-items:center;justify-content:center; font-size:18px;
+}
+.contact-item-text strong { display:block; font-size:13px; color:var(--muted); margin-bottom:2px; }
+.contact-item-text a, .contact-item-text span { font-size:15px; color:var(--text); text-decoration:none; }
+.contact-item-text a:hover { color:var(--accent); }
+
+.form-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px;
+}
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display:block; font-size:13px; color:var(--muted); margin-bottom:8px; font-weight:500; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%; padding:13px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family:'DM Sans',sans-serif; font-size:14px;
+  outline: none;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(94,234,212,0.08);
+}
+.form-group textarea { height:120px; resize:none; }
+.form-group select option { background:#0f172a; color:white; }
+.submit-btn {
+  width:100%; padding:14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #030410;
+  border:none; border-radius:12px;
+  font-family:'Syne',sans-serif; font-size:15px; font-weight:700;
+  cursor:pointer; transition:0.3s;
+}
+.submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(94,234,212,0.25); }
+.form-success {
+  display:none; text-align:center; padding:20px;
+  color: var(--accent); font-weight:600;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 50px 5% 30px;
+  position: relative; z-index: 1;
+}
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+  margin-bottom: 30px;
+}
+.footer-logo {
+  font-family:'Syne',sans-serif; font-size:20px; font-weight:800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.footer-links { display:flex; gap:20px; list-style:none; flex-wrap:wrap; }
+.footer-links a { color:var(--muted); text-decoration:none; font-size:14px; transition:0.3s; }
+.footer-links a:hover { color:var(--text); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:12px;
+  color:var(--muted); font-size:13px;
+}
+
+/* ── EMAIL FLOAT ── */
+.email-float {
+  position: fixed; right: -240px; top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #030410;
+  padding: 14px 20px;
+  border-radius: 14px 0 0 14px;
+  z-index: 9999;
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+  box-shadow: -4px 0 30px rgba(94,234,212,0.3);
+  transition: right 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.email-float.show { right: 0; }
+.email-float:hover { right: 0 !important; }
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.active { opacity:1; transform:translateY(0); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── MOBILE NAV ── */
+.mobile-menu {
+  display: none;
+  position: fixed; top: 70px; left: 0; right: 0;
+  background: rgba(3,4,10,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 5%;
+  z-index: 999;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu a {
+  color: var(--muted); text-decoration: none;
+  padding: 12px 16px; border-radius: 10px;
+  font-size: 15px; font-weight: 500;
+  transition: 0.3s;
+}
+.mobile-menu a:hover { background: var(--surface); color: var(--text); }
+.mobile-menu.open { display: flex; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  .ai-inner { grid-template-columns:1fr; }
+  .ai-visual { min-height:280px; }
+  .founder-inner { grid-template-columns:1fr; text-align:center; }
+  .founder-photo { margin:0 auto; }
+  .social-links { justify-content:center; }
+  .contact-inner { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .hero-stats { gap:24px; }
+  .stat-divider { display:none; }
+}
+
+@media(max-width:600px) {
+  section { padding:70px 5%; }
+  .hero-title { letter-spacing:-1px; }
+  .footer-inner { flex-direction:column; align-items:flex-start; }
+  .footer-bottom { flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+  <!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- AMBIENT ORBS -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="https://lyzonixtechnologies.online/file_000000000b94722f81ad764f6532f453~2.png" alt="Lyzonix">
+    <span>Lyzonix</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#ai-section">AI</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#ai-section" onclick="closeMobile()">AI Solutions</a>
+  <a href="#story" onclick="closeMobile()">Our Story</a>
+  <a href="#team" onclick="closeMobile()">Team</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact Us</a>
+  <a href="https://lalikumari6207-eng.github.io/Portfolio-lalikuamri/" target="_blank">Portfolio</a>
+  <a href="https://youtube.com/@lyzonixtechnologies" target="_blank">▶ YouTube</a>
+</div>
+
+<!-- EMAIL FLOAT -->
+<a href="mailto:lyzonixtechnologies@gmail.com" class="email-float" id="emailFloat">
+  <span>✉</span>
+  <span>Email Us</span>
+</a>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div>
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      AI-Powered IT Solutions · Est. 2017
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line1">We Build the</span>
+      <span class="line2">Digital Future</span>
+    </h1>
+
+    <p class="hero-sub">
+      From AI integration to web & app development, data analytics, and cloud infrastructure — Lyzonix Technologies transforms businesses with technology that actually works.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="scrollToContact()">
+        🚀 Start Your Project
+      </button>
+      <a href="#services" class="btn-ghost">
+        Explore Services →
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong id="c1">0</strong>
+        <span>Projects Delivered</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <strong id="c2">0</strong>
+        <span>Happy Clients</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <strong>7+</strong>
+        <span>Years in IT</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <strong>24/7</strong>
+        <span>Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Web Development</span>
+    <span class="marquee-item">App Development</span>
+    <span class="marquee-item">AI Integration</span>
+    <span class="marquee-item">Data Analytics</span>
+    <span class="marquee-item">Cloud Solutions</span>
+    <span class="marquee-item">IT Solutions</span>
+    <span class="marquee-item">Business Analytics</span>
+    <span class="marquee-item">Recruitment</span>
+    <span class="marquee-item">SEO & Growth</span>
+    <span class="marquee-item">Digital Transformation</span>
+    <!-- repeat -->
+    <span class="marquee-item">Web Development</span>
+    <span class="marquee-item">App Development</span>
+    <span class="marquee-item">AI Integration</span>
+    <span class="marquee-item">Data Analytics</span>
+    <span class="marquee-item">Cloud Solutions</span>
+    <span class="marquee-item">IT Solutions</span>
+    <span class="marquee-item">Business Analytics</span>
+    <span class="marquee-item">Recruitment</span>
+    <span class="marquee-item">SEO & Growth</span>
+    <span class="marquee-item">Digital Transformation</span>
+  </div>
+</div>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="reveal">
+    <p class="section-eyebrow">Who We Are</p>
+    <h2 class="section-title">Technology that drives<br>real business growth</h2>
+    <p class="section-desc" style="margin-bottom:50px;">
+      Lyzonix Technologies is a modern IT solutions company dedicated to helping businesses grow faster and smarter. We combine AI, development, and analytics to deliver results — not just services.
+    </p>
+  </div>
+
+  <div class="works-grid reveal">
+    <div class="work-card">
+      <span class="work-emoji">🏥</span>
+      <h3>Healthcare Platforms</h3>
+      <p>Professional healthcare websites with appointment systems, doctor profiles, and responsive UI built for real-world use.</p>
+    </div>
+    <div class="work-card">
+      <span class="work-emoji">🌍</span>
+      <h3>Social Organizations</h3>
+      <p>NGO & social organization platforms with donation, gallery, events, and awareness sections that make impact visible.</p>
+    </div>
+    <div class="work-card">
+      <span class="work-emoji">📑</span>
+      <h3>Business Automation</h3>
+      <p>Digital support solutions for tender processes, documentation workflows, and business operations — saving hours daily.</p>
+    </div>
+    <div class="work-card">
+      <span class="work-emoji">📱</span>
+      <h3>Android Apps</h3>
+      <p>Native Android applications for startups, service-based businesses, and digital platforms built for scale.</p>
+    </div>
+    <div class="work-card">
+      <span class="work-emoji">🏫</span>
+      <h3>Education Tech</h3>
+      <p>School management & education websites with admission, notices, and student management systems.</p>
+    </div>
+    <div class="work-card">
+      <span class="work-emoji">💼</span>
+      <h3>Business Websites</h3>
+      <p>Modern business websites designed to build online presence, strengthen branding, and convert visitors into clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<section id="services" style="border-top:1px solid var(--border)">
+  <div class="services-header reveal">
+    <p class="section-eyebrow">What We Offer</p>
+    <h2 class="section-title">Full-spectrum digital services</h2>
+    <p class="section-desc">Everything your business needs to build, scale, and dominate in the digital age.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">💻</div>
+      <h3>IT Solutions</h3>
+      <p>End-to-end IT consulting, infrastructure setup, and tech support tailored to your business needs.</p>
+      <span class="service-tag">CORE SERVICE</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">🌐</div>
+      <h3>Web Development</h3>
+      <p>High-performance, SEO-optimized websites that look stunning and convert visitors into customers.</p>
+      <span class="service-tag">POPULAR</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">📱</div>
+      <h3>App Development</h3>
+      <p>Android applications built with clean UI, smooth performance, and real-world functionality.</p>
+      <span class="service-tag">MOBILE</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">📊</div>
+      <h3>Data Analytics</h3>
+      <p>Transform raw data into powerful business insights with dashboards, reports, and predictive models.</p>
+      <span class="service-tag">AI-POWERED</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">📈</div>
+      <h3>Business Analytics</h3>
+      <p>Market analysis, performance tracking, and strategic insights to help you make smarter decisions.</p>
+      <span class="service-tag">STRATEGY</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">📋</div>
+      <h3>Recruitment & HR</h3>
+      <p>Bulk hiring, talent sourcing, and end-to-end recruitment process management for growing teams.</p>
+      <span class="service-tag">HR TECH</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">☁</div>
+      <h3>Cloud Services</h3>
+      <p>Cloud migration, infrastructure management, and scalable hosting solutions on leading platforms.</p>
+      <span class="service-tag">CLOUD</span>
+    </div>
+    <div class="service-card reveal" onclick="scrollToContact()">
+      <div class="service-icon">🔍</div>
+      <h3>SEO & Digital Growth</h3>
+      <p>Search engine optimization, content strategy, and digital marketing to grow your online visibility.</p>
+      <span class="service-tag">GROWTH</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AI SECTION ═══════════════ -->
+<section id="ai-section">
+  <div class="ai-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">The Future Is Now</p>
+      <h2 class="section-title">AI-integrated solutions for tomorrow's challenges</h2>
+      <p class="section-desc" style="margin-bottom:28px;">
+        We don't just build websites — we build intelligent systems. From AI chatbots and automation tools to smart data pipelines and predictive analytics, Lyzonix is at the frontier of what technology can do for your business.
+      </p>
+      <p class="section-desc" style="margin-bottom:28px;">
+        As AI transforms every industry, we help you stay ahead — integrating intelligent tools that automate repetitive work, understand customer needs, and solve real daily-life problems at scale.
+      </p>
+      <div class="ai-feature-pills">
+        <span class="ai-pill"><span class="ai-pill-dot teal"></span>AI Chatbots</span>
+        <span class="ai-pill"><span class="ai-pill-dot indigo"></span>Automation Workflows</span>
+        <span class="ai-pill"><span class="ai-pill-dot pink"></span>Predictive Analytics</span>
+        <span class="ai-pill"><span class="ai-pill-dot teal"></span>Smart Dashboards</span>
+        <span class="ai-pill"><span class="ai-pill-dot indigo"></span>NLP & Data Extraction</span>
+        <span class="ai-pill"><span class="ai-pill-dot pink"></span>AI-Powered SEO</span>
+      </div>
+    </div>
+    <div class="ai-visual reveal">
+      <div class="orbit orbit1"><div class="orbit-dot"></div></div>
+      <div class="orbit orbit2"><div class="orbit-dot orbit-dot2"></div></div>
+      <div class="orbit orbit3"><div class="orbit-dot orbit-dot3"></div></div>
+      <div class="ai-core">
+        <div class="ai-core-inner">🤖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STORY ═══════════════ -->
+<section id="story" style="border-top:1px solid var(--border)">
+  <div class="story-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Our Journey</p>
+      <h2 class="section-title">From curious learners<br>to a growing tech company</h2>
+    </div>
+    <div class="story-timeline">
+      <div class="timeline-item reveal">
+        <span class="timeline-year">2017</span>
+        <div class="timeline-content">
+          <h4>The Spark</h4>
+          <p>Our journey began when we first discovered the world of IT — curious learners with a big vision to do something meaningful with technology.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <span class="timeline-year">2018–23</span>
+        <div class="timeline-content">
+          <h4>Building in the Dark</h4>
+          <p>Without an official company, we connected with local people, explored opportunities, and kept learning — even when doubters said it wouldn't work. Consistency was our strategy.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <span class="timeline-year">2024</span>
+        <div class="timeline-content">
+          <h4>First Client. Real Beginning.</h4>
+          <p>We landed our first paying client — a milestone that turned years of preparation into a professional journey. The company became real.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <span class="timeline-year">2024–26</span>
+        <div class="timeline-content">
+          <h4>Growing Fast</h4>
+          <p>12+ clients. 50+ projects. Multiple industries. From healthcare to education, NGOs to startups — we've delivered results that matter.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <span class="timeline-year">Future</span>
+        <div class="timeline-content">
+          <h4>AI-First Expansion</h4>
+          <p>Building toward a future where AI tools, automation, and smart technologies are accessible to every business — from local shops to global enterprises.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOUNDER ═══════════════ -->
+<section id="team">
+  <div class="founder-inner">
+    <div class="founder-photo reveal">
+      <img src="https://lyzonixtechnologies.online/IMG_20260512_201855.png" alt="Lali Kumari — MD & CEO">
+    </div>
+    <div class="founder-info reveal">
+      <p class="section-eyebrow">MD & CEO</p>
+      <h2>Lali Kumari</h2>
+      <p class="founder-quote">
+        "Building dreams with technology, consistency & vision. Technology has changed the rules of success — the ones who adapt, create, and innovate are the ones who dominate."
+      </p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/lali-bhardwaj-ceo" target="_blank" class="social-link">
+          <span>in</span> LinkedIn
+        </a>
+        <a href="https://youtube.com/@explorewithlali04" target="_blank" class="social-link">
+          <span>▶</span> YouTube
+        </a>
+        <a href="https://lalikumari6207-eng.github.io/Portfolio-lalikuamri/" target="_blank" class="social-link">
+          <span>⬡</span> Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section id="faq" style="border-top:1px solid var(--border)">
+  <div style="text-align:center;margin-bottom:50px;" class="reveal">
+    <p class="section-eyebrow">Got Questions?</p>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What services does Lyzonix Technologies provide?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">We provide IT solutions, web & app development, data analytics, business analytics, cloud services, SEO, and recruitment process outsourcing. We also integrate AI tools into client workflows.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you work with startups or only established businesses?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Both! We've worked with early-stage startups, NGOs, schools, hospitals, and established companies. Our packages scale to your size and budget.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you provide hiring and recruitment services?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. We handle end-to-end recruitment including bulk hiring, talent sourcing, screening, and onboarding support for businesses across industries.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What is bulk hiring and do you offer it?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Bulk hiring means recruiting multiple employees at once — ideal for companies expanding rapidly. Yes, we offer this as part of our Recruitment Process service.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you build websites and Android apps?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes! We build modern, responsive websites optimized for SEO and performance, as well as native Android applications for businesses and startups.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Are your services paid? What's the pricing like?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes, our services are paid and priced based on project scope, complexity, and timeline. We offer competitive pricing and custom quotes. Contact us to get a free estimate.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you work with clients globally?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes! We work with clients worldwide. Our team communicates via email, video calls, and project management tools to ensure seamless collaboration regardless of location.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Are internships or collaborations available?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes, we welcome internship applications and collaborations. Reach out through our contact form with your area of interest.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Let's Work Together</p>
+      <h2 class="section-title" style="font-size:clamp(26px,3.5vw,40px)">Ready to build something<br>remarkable?</h2>
+      <p class="contact-info" style="color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:32px;">
+        Tell us about your project and we'll get back to you within 24 hours with a custom plan. No fluff — just results.
+      </p>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉</div>
+        <div class="contact-item-text">
+          <strong>Email</strong>
+          <a href="mailto:lyzonixtechnologies@gmail.com">lyzonixtechnologies@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">▶</div>
+        <div class="contact-item-text">
+          <strong>YouTube</strong>
+          <a href="https://youtube.com/@lyzonixtechnologies" target="_blank">@lyzonixtechnologies</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">in</div>
+        <div class="contact-item-text">
+          <strong>LinkedIn</strong>
+          <a href="https://www.linkedin.com/in/lali-bhardwaj-ceo" target="_blank">Lali Kumari — MD & CEO</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="f-name" placeholder="Rahul Sharma">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="f-email" placeholder="you@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="f-phone" placeholder="+91 98765 43210">
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select id="f-service">
+          <option value="">Select a service</option>
+          <option>IT Solutions</option>
+          <option>Web Development</option>
+          <option>App Development</option>
+    <option>Data Analytics</option>
+          <option>Business Analytics</option>
+          <option>Recruitment Process</option>
+          <option>Cloud Services</option>
+          <option>SEO & Digital Growth</option>
+          <option>AI Integration</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us about your project</label>
+        <textarea id="f-msg" placeholder="Briefly describe what you need and your timeline..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">
+        🚀 Send Your Requirement
+      </button>
+      <div class="form-success" id="formSuccess">
+        ✅ Sent successfully! We'll reach out within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Lyzonix Technologies</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#ai-section">AI Solutions</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://lalikumari6207-eng.github.io/Portfolio-lalikuamri/" target="_blank">Portfolio</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lyzonix Technologies. All rights reserved.</span>
+    <span>Built with 💚 for the future</span>
+  </div>
+</footer>
 
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyBpg4EFwQH3ZkGsX5WcTBcmPxMbYSw3_gQ",
   authDomain: "lyzonix-bfba9.firebaseapp.com",
@@ -22,1656 +1259,119 @@ const firebaseConfig = {
   messagingSenderId: "141327169537",
   appId: "1:141327169537:web:bd0f88dda2bf38a92fa800"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-window.db=db;
-window.addDoc=addDoc;
-window.collection=collection;
-window.getDocs=getDocs;
+window.db = db;
+window.addDoc = addDoc;
+window.collection = collection;
 </script>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#050816;color:white;overflow-x:hidden;}
-canvas{
-position:absolute;
-top:0;
-left:0;
-z-index:-1;
-}
-.reveal{
-  opacity:0;
-  transform:translateY(40px) scale(0.9);
-  transition:all 1s ease;
-}
-
-.reveal.active{
-  opacity:1;
-  transform:translateY(0) scale(1);
-}
-  
-
-/* HERO */
-  .hero{
-  position:relative;
-  overflow:hidden;
-  text-align:center;
-  padding:120px 20px 80px;
-  margin-top:60px;
-}
-
-  .hero-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  }
-  
-.hero p{
-margin-top:30px;
-font-size:16px;
-opacity:0.8;
-letter-spacing:1px;
-}
-  /* FLOATING EMAIL BUTTON */
-
-.email-float{
-  position:fixed;
-  right:-220px;
-  top:50%;
-  transform:translateY(-50%);
-  background:linear-gradient(135deg,#4f46e5,#7c3aed);
-  color:white;
-  padding:14px 22px;
-  border-radius:14px 0 0 14px;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  font-weight:600;
-  box-shadow:0 0 20px rgba(79,70,229,0.5);
-  transition:0.6s ease;
-}
-
-/* SCROLL PE SHOW */
-.email-float.show{
-  right:0;
-}
-
-/* HOVER */
-.email-float:hover{
-  transform:translateY(-50%) scale(1.05);
-}
-
-.email-icon{
-  font-size:20px;
-}
-  
-  /* layout */
-.hero-content {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-}
-
-/* SCREEN LOOK */
-.screen {
-  width: 180px;
-  height: 180px;
-  background: #020617;
-  border-radius: 15px;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  
-  /* glow + border */
-  box-shadow: 
-    0 0 20px rgba(79,70,229,0.6),
-    inset 0 0 15px rgba(79,70,229,0.3);
-
-  border: 2px solid rgba(79,70,229,0.4);
-}
-
-/* rotating logo */
-.logo-spin {
-  width: 100px;
-  animation: spin 6s linear infinite;
-}
-  .screen {
-  position: relative;
-}
-
-.screen::before {
-  content: '';
-  position: absolute;
-  width: 50%;
-  height: 5px;
-  background: #4f46e5;
-  bottom: -15px;
-  left: 25%;
-  border-radius: 5px;
-}
-  
-
-#logoCanvas{
-display:block;
-margin:40px auto;
-width:100%;
-max-width:700px;
-height:250px;
-position:relative;
-z-index:1;
-}
-  .logo-spin {
-  width: 120px;
-  }
-
-  
-
-/* BUTTON */
-.btn{
-margin-top:30px;
-padding:12px 28px;
-border-radius:30px;
-border:none;
-cursor:pointer;
-font-weight:600;
-transition:0.3s;
-}
-
-.btn1{
-background:#4f46e5;
-color:white;
-}
-
-.btn:hover{
-transform:scale(1.05);
-       }
-  
-section{padding:90px 10%;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;}
-
-.card{
-background:rgba(255,255,255,0.06);
-padding:25px;
-border-radius:18px;
-cursor:pointer;
-}
-
-.popup{
-display:none;
-position: fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-.popup-box{
-background:white;
-color:black;
-padding:20px;
-border-radius:15px;
-width:90%;
-max-width:400px;
-}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:10px;
-}
-
-.send{
-background:green;color:white;padding:10px;width:100%;
-}
-
-  
-/* MENU */
-  .menu-container{
-position:fixed;
-top:25px;
-right:25px;
-display:flex;
-align-items:center;
-gap:18px;
-z-index:1000;
-background:rgba(15,23,42,0.85);
-padding:8px 12px;
-border-radius:12px;
-backdrop-filter: blur(10px);
-border:1px solid rgba(255,255,255,0.1);
-  }
-
-  #team{
-  text-align:center;
-  padding:100px 20px;
-}
-
-/* BIG HEADING */
-.team-heading{
-  font-size:60px;
-  font-weight:700;
-  margin-bottom:50px;
-  letter-spacing:3px;
-}
-
-/* CARD */
-.team-card{
-  background:rgba(255,255,255,0.05);
-  display:inline-block;
-  padding:30px;
-  border-radius:20px;
-  backdrop-filter:blur(10px);
-}
-
-/* IMAGE */
-.team-img{
-  width:130px;
-  height:130px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:15px;
-  border:3px solid #4f46e5;
-}
-
-/* NAME */
-.team-card h3{
-  margin:5px 0;
-}
-
-/* ROLE */
-.role{
-  opacity:0.7;
-  font-size:14px;
-}
-
-/* SOCIAL LINKS */
-.team-links{
-  margin-top:15px;
-}
-
-.team-links a{
-  text-decoration:none;
-  margin:0 5px;
-  padding:6px 10px;
-  border-radius:8px;
-  background:rgba(255,255,255,0.08);
-  color:#facc15;
-  font-size:14px;
-  transition:0.3s;
-}
-
-.team-links a:hover{
-  background:#facc15;
-  color:#0f172a;
-}
-
-  
-/* social icons */
-.social-icons a{
-color:#facc15; /* yellow */
-text-decoration:none;
-font-size:16px;
-margin-right:6px;
-padding:6px 9px;
-border-radius:10px;
-background:rgba(255,255,255,0.08);
-transition:0.3s;
-backdrop-filter: blur(6px);
-}
-
-.social-icons a:hover{
-background:#facc15;
-color:#0f172a; /* dark blue text */
-}
-  
-  .menu{
-position:relative;
-font-size:28px;
-cursor:pointer;
-  }
-  
-
-  .dropdown{
-display:none;
-position:absolute;
-right:0;
-background:#0f172a; /* dark blue */
-padding:10px;
-border-radius:10px;
-border:1px solid rgba(250,204,21,0.3);
-}
-
-.dropdown a:hover{
-background:#facc15;
-color:#0f172a;
-}
-
-  .dropdown{
-  display:none;
-}
-
-.dropdown.active{
-  display:block;
-}
-  #story{
-  background: rgba(255,255,255,0.02);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
-}
-
-#story h2{
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.story-text{
-  max-width: 800px;
-  margin: 15px auto;
-  line-height: 1.7;
-  opacity: 0.85;
-}
-
-  /* FOUNDER SECTION */
-#team{
-  padding:100px 10%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* CARD */
-.founder-card{
-  width:100%;
-  max-width:950px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:25px;
-  padding:40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:40px;
-  backdrop-filter:blur(10px);
-
-  /* ANIMATION */
-  animation: zoomSide 1.2s ease;
-}
-
-/* LEFT SIDE */
-.founder-info{
-  flex:1;
-}
-
-.small-role{
-  font-size:13px;
-  letter-spacing:3px;
-  opacity:0.5;
-  margin-bottom:10px;
-  font-weight:300;
-}
-
-.founder-info h2{
-  font-size:42px;
-  margin-bottom:15px;
-}
-
-.quote{
-  font-size:15px;
-  line-height:1.8;
-  opacity:0.8;
-  max-width:420px;
-}
-
-/* IMAGE */
-.founder-image{
-  flex:0.8;
-  display:flex;
-  justify-content:center;
-}
-
-.team-img{
-  width:220px;
-  height:220px;
-  object-fit:cover;
-  border-radius:20px;
-  border:2px solid #4f46e5;
-
-  box-shadow:
-    0 0 25px rgba(79,70,229,0.4);
-
-  transition:0.4s;
-}
-
-.team-img:hover{
-  transform:scale(1.05);
-}
-
-/* SOCIAL */
-.team-links{
-  margin-top:25px;
-}
-
-.team-links a{
-  text-decoration:none;
-  margin-right:10px;
-  padding:8px 12px;
-  border-radius:10px;
-  background:rgba(255,255,255,0.08);
-  color:#facc15;
-  transition:0.3s;
-}
-
-.team-links a:hover{
-  background:#facc15;
-  color:#0f172a;
-}
-
-/* ANIMATION */
-@keyframes zoomSide{
-  from{
-    opacity:0;
-    transform:translateX(-120px) scale(0.8);
-  }
-
-  to{
-    opacity:1;
-    transform:translateX(0) scale(1);
-  }
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-  .founder-card{
-    flex-direction:column-reverse;
-    text-align:center;
-    padding:30px 20px;
-  }
-
-  .founder-info h2{
-    font-size:32px;
-  }
-
-  .quote{
-    margin:auto;
-  }
-
-  .team-img{
-    width:180px;
-    height:180px;
-  }
-}
-  
-/* FAQ */
-.faq{
-background:rgba(255,255,255,0.05);
-padding:15px;
-margin:10px 0;
-border-radius:10px;
-cursor:pointer;
-}
-#about{
-background:rgba(255,255,255,0.03);
-border-top:1px solid rgba(255,255,255,0.08);
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-#about h2{
-text-align:center;
-margin-bottom:20px;
-font-size:28px;
-}
-
-.about-text{
-max-width:800px;
-margin:15px auto;
-text-align:center;
-opacity:0.85;
-line-height:1.7;
-}
-
-.about-list{
-max-width:600px;
-margin:20px auto;
-list-style:none;
-padding:0;
-}
-
-.about-list li{
-margin:10px 0;
-padding:10px;
-background:rgba(255,255,255,0.05);
-border-radius:10px;
-}
-  
-.answer{display:none;margin-top:10px;color:#cbd5e1;}
-.faq.active .answer{display:block;}
-  section{
-padding:80px 10%;
-position:relative;
-z-index:1;
-  }
-  /* EXPERIENCE SECTION */
-#experience{
-  padding:100px 10%;
-  text-align:center;
-  background:
-    radial-gradient(circle at top,#1e293b 0%, #020617 70%);
-}
-
-.exp-title{
-  font-size:42px;
-  margin-bottom:10px;
-  font-weight:700;
-}
-
-.exp-subtitle{
-  opacity:0.7;
-  margin-bottom:50px;
-  font-size:15px;
-}
-
-.experience-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
-}
-
-.exp-card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:22px;
-  padding:30px 25px;
-  text-align:left;
-  backdrop-filter:blur(10px);
-
-  transition:0.4s ease;
-  position:relative;
-  overflow:hidden;
-}
-
-.exp-card::before{
-  content:'';
-  position:absolute;
-  width:120px;
-  height:120px;
-  background:rgba(79,70,229,0.15);
-  border-radius:50%;
-  top:-40px;
-  right:-40px;
-}
-
-.exp-card:hover{
-  transform:translateY(-10px) scale(1.02);
-  border-color:#4f46e5;
-  box-shadow:0 0 30px rgba(79,70,229,0.2);
-}
-
-.exp-icon{
-  font-size:34px;
-  margin-bottom:18px;
-}
-
-.exp-card h3{
-  margin-bottom:12px;
-  font-size:22px;
-}
-
-.exp-card p{
-  opacity:0.75;
-  line-height:1.7;
-  font-size:14px;
-}
-
-.experience-bottom{
-  margin-top:50px;
-  opacity:0.8;
-  line-height:2;
-}
-
-@media(max-width:768px){
-
-  .exp-title{
-    font-size:32px;
-  }
-
-  .exp-card{
-    text-align:center;
-  }
-  }
-  /* CLIENT FORM */
-
-#client-form{
-  padding:100px 10%;
-  background:#020617;
-  text-align:center;
-}
-
-.form-title{
-  font-size:38px;
-  margin-bottom:40px;
-}
-
-.client-form-box{
-  max-width:700px;
-  margin:auto;
-  background:rgba(255,255,255,0.05);
-  padding:35px;
-  border-radius:25px;
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);
-}
-
-.client-form-box input,
-.client-form-box select,
-.client-form-box textarea{
-
-  width:100%;
-  padding:14px;
-  margin:12px 0;
-
-  border:none;
-  outline:none;
-
-  border-radius:12px;
-
-  background:rgba(255,255,255,0.08);
-
-  color:white;
-
-  font-size:15px;
-}
-
-.client-form-box textarea{
-  height:140px;
-  resize:none;
-}
-
-.client-form-box button{
-
-  width:100%;
-  padding:14px;
-
-  border:none;
-  border-radius:14px;
-
-  background:#4f46e5;
-  color:white;
-
-  font-size:16px;
-  font-weight:600;
-
-  cursor:pointer;
-
-  transition:0.3s;
-}
-
-.client-form-box button:hover{
-  transform:scale(1.02);
-  background:#5b52ff;
-}
-
-.client-form-box select option{
-  color:black;
-}
-
-  /* CLIENT LOGOS */
-
-.client-logos{
-  flex:1;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-}
-
-.client-logo{
-
-  width:110px;
-  height:110px;
-
-  object-fit:contain;
-
-  background:white;
-  padding:12px;
-
-  border-radius:18px;
-
-  transition:0.4s;
-
-  box-shadow:0 0 20px rgba(255,255,255,0.08);
-}
-
-.client-logo:hover{
-
-  transform:scale(1.08) rotate(2deg);
-
-  box-shadow:0 0 30px rgba(79,70,229,0.4);
-
-}
-  /* STATS SECTION */
-
-#stats{
-  padding:90px 10%;
-  text-align:center;
-  background:linear-gradient(to right,#020617,#111827);
-}
-
-.stats-grid{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
-}
-
-.stat-box{
-  width:260px;
-  padding:35px 20px;
-  border-radius:25px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);
-
-  transition:0.4s;
-}
-
-.stat-box:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 25px rgba(79,70,229,0.3);
-}
-
-.stat-box h2{
-  font-size:55px;
-  color:#facc15;
-  margin-bottom:10px;
-}
-
-.stat-box p{
-  opacity:0.8;
-  font-size:16px;
-}
-/* TYPING TAGLINE */
-
-#typing-tagline{
-  position:relative;
-  padding:60px 10%;
-  text-align:center;
-  overflow:hidden;
-}
-
-/* TEXT */
-
-.typing-text{
-
-  font-size:34px;
-  font-weight:700;
-
-  background:linear-gradient(
-    90deg,
-    #ff0080,
-    #7928ca,
-    #0070f3,
-    #00c6ff,
-    #00ff94,
-    #ffcc00
-  );
-
-  background-size:400%;
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-
-  animation:gradientMove 8s linear infinite;
-
-  position:relative;
-  display:inline-block;
-}
-
-/* CURSOR */
-
-.typing-text::after{
-
-  content:"|";
-
-  color:white;
-
-  margin-left:4px;
-
-  animation:blink .7s infinite;
-}
-
-/* CURSOR BLINK */
-
-@keyframes blink{
-
-  50%{
-    opacity:0;
-  }
-
-}
-
-/* GRADIENT MOVE */
-
-@keyframes gradientMove{
-
-  0%{
-    background-position:0%;
-  }
-
-  100%{
-    background-position:400%;
-  }
-
-}
-
-/* FLOATING COLORS */
-
-.floating-colors span{
-
-  position:absolute;
-
-  width:120px;
-  height:120px;
-
-  border-radius:50%;
-
-  filter:blur(45px);
-
-  opacity:0.5;
-
-  animation:float 10s infinite alternate;
-}
-
-.floating-colors span:nth-child(1){
-  background:#ff0080;
-  top:10%;
-  left:5%;
-}
-
-.floating-colors span:nth-child(2){
-  background:#7928ca;
-  top:60%;
-  left:20%;
-}
-
-.floating-colors span:nth-child(3){
-  background:#0070f3;
-  top:20%;
-  right:10%;
-}
-
-.floating-colors span:nth-child(4){
-  background:#00ff94;
-  bottom:10%;
-  right:20%;
-}
-
-.floating-colors span:nth-child(5){
-  background:#ffcc00;
-  top:40%;
-  left:45%;
-}
-
-.floating-colors span:nth-child(6){
-  background:#00c6ff;
-  bottom:20%;
-  left:60%;
-}
-
-/* FLOAT */
-
-@keyframes float{
-
-  from{
-    transform:translateY(-20px) translateX(-10px);
-  }
-
-  to{
-    transform:translateY(20px) translateX(20px);
-  }
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  .typing-text{
-    font-size:20px;
-    line-height:1.6;
-  }
-
-}
-  
-</style>
-  <meta name="google-site-verification" content="wyPJCq7rLL8e9uipEopt-ItztYq84U0DS2bgwVMjCx8" />
-</head>
-
-<body>
-
-<!-- MENU -->
-  
-<div class="menu-container">
-
-  <div class="social-icons">
-
-    <a href="#about">About</a>
-    
-    <a href="https://youtube.com/@lyzonixtechnologies?si=bXn5gtN9GBKWQoME" target="_blank">▶</a>
-    
-    <a href="https://www.linkedin.com/feed/update/activity:7444339822011424768" target="_blank">in</a>
-  </div>
-  
-  
-
-  <div class="menu" onclick="toggleMenu()">
-    <span id="menuIcon">☰</span>
-    <div class="dropdown">
-      <a href="#faq">FAQ</a>
-      <a href="#services">Services</a>
-      <a href="#" onclick="openLogin()">Employee Login</a>
-      <a href="https://lalikumari6207-eng.github.io/Portfolio-lalikuamri/" target="_blank">Portfolio</a>
-    </div>
-  </div>
-</div>
-  
-
-  <div class="hero">
-<div class="hero-content">
-  
-  <img src="file_000000000b94722f81ad764f6532f453~2.png" class="logo-spin">
-</div>
-
-  
-  
-<canvas id="logoCanvas"></canvas>
-
-
-  
-  
-
-  <!-- TYPING TAGLINE -->
-
-<section id="typing-tagline">
-
-  <h1 class="typing-text">
-    Building the future with creativity, technology, and ideas that matter.
-  </h1>
-
-  <div class="floating-colors">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-</section>
-  
-<button class="btn btn1" onclick="openForm()">Contact Us</button>
-</div>
-
-  <section id="about">
-  <h2>About Us</h2>
-
-  <p class="about-text">
-    Lyzonix Technologies is a modern IT solutions company dedicated to helping businesses grow faster and smarter. 
-    We provide a complete range of services including IT solutions, web & app development and data analytics.
-  </p>
-
-  <p class="about-text reveal">
-    Our goal is simple — to make business operations easy by combining technology and human resource expertise. 
-    Whether you are a startup or an established company, we help you build, manage, and scale your team and digital presence.
-  </p>
-
-  <p class="about-text reveal">
-    We specialize in:
-  </p>
-
-  <ul class="about-list reveal">
-    <li>✔ IT Solutions & Development</li>
-    <li>✔ Data & Business Analytics</li>
-    <li>✔ Cloud Solutions</li>
-  </ul>
-
-  <p class="about-text reveal">
-    📩 To work with us, simply click on the "Contact Us" button and share your requirements. 
-    Our team will connect with you and guide you step-by-step.
-  </p>
-  </section>
-
-  <section id="story">
-  <h2>Our Story</h2>
-
-  <p class="story-text reveal">
-    The idea of Lyzonix Technologies began back in 2017, when we first got introduced to the world of IT. 
-    At that time, we were just curious learners with a vision to do something meaningful in technology.
-  </p>
-
-  <p class="story-text reveal">
-    Along with our founder and co-founder, we decided to give it a try — even without officially starting a company. 
-    We began by connecting with local people, discussing ideas, and exploring opportunities. 
-    In the beginning, many people doubted us and thought it wouldn’t work.
-  </p>
-
-  <p class="story-text reveal">
-    Despite the challenges, we stayed consistent, kept learning, and continued improving our skills in development, 
-    analytics, and real-world problem solving.
-  </p>
-
-  <p class="story-text reveal">
-    In 2024, we achieved a major milestone by getting our first client. That moment marked the real beginning 
-    of our professional journey.
-  </p>
-
-  <p class="story-text reveal">
-    From 2024 to 2026, we have successfully worked with 12+ clients and delivered 50+ projects across different domains.
-  </p>
-
-  <p class="story-text reveal">
-    Today, Lyzonix Technologies stands as a growing IT solutions company, committed to helping businesses build, 
-    grow, and succeed in the digital world.
-  </p>
-  </section>
-  <!-- FLOATING EMAIL -->
-
-<a href="mailto:lyzonixtechnologies@gmail.com"
-   class="email-float"
-   id="emailFloat">
-
-   <span class="email-icon">✉</span>
-   <span>Email Us</span>
-
-</a>
-  
-  
-<!-- SERVICES -->
-<section id="services reveal">
-<h2>Services</h2>
-<div class="grid">
-<div class="card reveal" onclick="openForm()">💻 IT Solutions</div>
-<div class="card reveal" onclick="openForm()">🌐 Web Development</div>
-<div class="card reveal" onclick="openForm()">📱 App Development</div>
-<div class="card reveal" onclick="openForm()">📊 Data Analytics</div>
-<div class="card reveal" onclick="openForm()">📈 Business Analytics</div>
-<div class="card reveal" onclick="openForm()">📋 Recruitment Process</div>
-<div class="card reveal" onclick="openForm()">☁ Cloud Services</div>
-</div>
-</section>
-
-  <!-- STATS SECTION -->
-
-<section id="stats">
-
-  <div class="stats-grid">
-
-    <div class="stat-box reveal">
-      <h2 class="counter" data-target="25">0</h2>
-      <p>Projects Completed</p>
-    </div>
-
-    <div class="stat-box reveal">
-      <h2 class="counter" data-target="20">0</h2>
-      <p>Happy Clients</p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- FAQ -->
-<section id="faq reveal">
-<h2>FAQ</h2>
-
-<div class="faq"><div class="question reveal">What services do you provide?</div><div class="answer">IT, HR, Data Analytics& Cloud.</div></div>
-<div class="faq"><div class="question reveal">Do you provide hiring?</div><div class="answer">Yes hiring & recruitment.</div></div>
-<div class="faq"><div class="question reveal">What is bulk hiring?</div><div class="answer">Multiple employees hiring.</div></div>
-<div class="faq"><div class="question reveal">Do you build websites?</div><div class="answer">Yes modern websites.</div></div>
-<div class="faq"><div class="question reveal">Do you build apps?</div><div class="answer">Yes Android apps.</div></div>
-<div class="faq"><div class="question reveal">Do you provide analytics?</div><div class="answer">Yes data analytics.</div></div>
-<div class="faq"><div class="question reveal">Is service paid?</div><div class="answer">Depends on project.</div></div>
-<div class="faq"><div class="question reveal">How to contact?</div><div class="answer">Use form.</div></div>
-<div class="faq"><div class="question reveal">Do you work globally?</div><div class="answer">Yes worldwide.</div></div>
-<div class="faq"><div class="question reveal">Can I collaborate?</div><div class="answer">Yes.</div></div>
-<div class="faq"><div class="question reveal">Do you provide cloud?</div><div class="answer">Yes cloud solutions.</div></div>
-<div class="faq"><div class="question reveal">Internships?</div><div class="answer">Yes available.</div></div>
-
-
-  <section id="experience">
-
-  <h2 class="exp-title reveal">What We Work On</h2>
-
-  <p class="exp-subtitle reveal">
-    Delivering modern digital solutions for businesses, organizations & startups.
-  </p>
-
-  <div class="experience-grid">
-
-    <div class="exp-card reveal">
-      <div class="exp-icon">🏥</div>
-      <h3>Hospital Websites</h3>
-      <p>
-        Professional healthcare websites with appointment systems,
-        doctor profiles, enquiry forms & responsive UI.
-      </p>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-icon">🌍</div>
-      <h3>Social Organization Websites</h3>
-      <p>
-        NGO & social organization platforms with donation,
-        gallery, event and awareness sections.
-      </p>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-icon">📑</div>
-      <h3>Tender & Business Work</h3>
-      <p>
-        Digital support solutions for tender process,
-        documentation and business workflow systems.
-      </p>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-icon">📱</div>
-      <h3>App Development</h3>
-      <p>
-        Android application development for startups,
-        businesses and service-based platforms.
-      </p>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-icon">🏫</div>
-      <h3>School & Education</h3>
-      <p>
-        School management & education websites with
-        admission forms, notices and student sections.
-      </p>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-icon">💼</div>
-      <h3>Business Websites</h3>
-      <p>
-        Modern business websites designed to build
-        online presence, branding & customer trust.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="experience-bottom reveal">
-    <p>
-      ✔ Worked on multiple real-world digital projects across different industries.
-    </p>
-
-    <p>
-      ✔ Focused on clean UI, mobile responsiveness & modern technology.
-    </p>
-  </div>
-
-  </section>
-  
- <section id="team">
-
-  <div class="founder-card reveal">
-
-    <!-- LEFT CONTENT -->
-    <div class="founder-info">
-      
-      <p class="small-role">/ MD & CEO</p>
-
-      <h2>Lali Kumari</h2>
-
-      <p class="quote">
-        “Building dreams with technology, consistency & vision || Technology has changed the rules of success. The ones who adapt, create, and innovate are the ones who dominate.”
-      </p>
-
-      <div class="team-links">
-        <a href="https://www.linkedin.com/in/lali-bhardwaj-ceo" target="_blank">in</a>
-        <a href="https://youtube.com/@explorewithlali04?si=dKjeLTVNhoQGR9Gr" target="_blank">▶</a>
-        <a href="https://lalikumari6207-eng.github.io/Lyzonix/" target="_blank">GH</a>
-      </div>
-
-    </div>
-
-    <!-- RIGHT IMAGE -->
-    <div class="client-logos">
-
-  <img src="IMG_20260512_201855.png" class="client-logo">
-  <img src="FB_IMG_1778597099075.jpg" class="client-logo">
-  <img src="IMG_20260512_201839.png" class="client-logo">
-  <img src="IMG_20260512_202217.png" class="client-logo">
-<img src="IMG_20260512_202206.png" class="client-logo">
-    </div>
-
-  </div>
-
- </section>
-
-  <!-- CLIENT FORM SECTION -->
-
-<section id="client-form">
-
-  <h2 class="form-title">Client Requirement Form</h2>
-
-  <div class="client-form-box">
-
-    <input type="text" id="name" placeholder="Full Name">
-
-    <select id="service">
-
-      <option value="">Select Service</option>
-
-      <option>IT Solutions</option>
-
-      <option>Web Development</option>
-
-      <option>App Development</option>
-
-      <option>Data Analytics</option>
-
-      <option>Business Analytics</option>
-
-      <option>Recruitment Process</option>
-
-      <option>Cloud Services</option>
-
-    </select>
-
-    <input type="email" id="email" placeholder="Email Address">
-
-    <input type="text" id="contact" placeholder="Contact Number (Optional)">
-
-    <textarea id="message" placeholder="Describe Your Requirement"></textarea>
-
-    <button onclick="submitClientForm()">
-      Submit Requirement
-    </button>
-
-  </div>
-
-</section>
-
-<style>
-#contact{
-  background:#0f172a;
-  padding:50px 20px;
-  text-align:right;
-  color:white;
-  font-family:Arial, sans-serif;
-}
-
-.contact-box{
-  background:#1e293b;
-  display:inline-block;
-  padding:30px 40px;
-  border-radius:15px;
-  box-shadow:0 0 15px rgba(0,0,0,0.4);
-}
-
-
-.contact-box a:hover{
-}
-</style>
-
-<style>
-body{
-  font-family: Arial, sans-serif;
-  margin:0;
-  background:#0f172a;
-  color:white;
-}
-
-.title{
-  text-align:center;
-  font-size:32px;
-  margin:40px 0;
-  color:#38bdf8;
-}
-
-
-</style>
-
-<footer style="text-align:center;padding:40px;background:#020617;">
-  <p style="opacity:0.7;">© 2025 Lyzonix Technologies. All Rights Reserved.</p>
-</footer>
-<!-- CONTACT -->
-<div class="popup" id="popup">
-<div class="popup-box">
-<input id="name" placeholder="Name">
-<input id="email" placeholder="Email">
-<textarea id="message" placeholder="Message"></textarea>
-<button class="send" onclick="sendEmail()">Send</button>
-<button onclick="closeForm()">Close</button>
-</div>
-</div>
-  
-<!-- LOGIN -->
-<div class="popup" id="loginPopup">
-<div class="popup-box">
-<h3>Employee Login</h3>
-<input id="code" placeholder="Enter Code">
-<button onclick="login()">Login</button>
-</div>
-</div>
-
-<!-- DASHBOARD -->
-<div class="popup" id="dashboard">
-<div class="popup-box" style="max-height:80vh;overflow:auto;">
-<h3>Client Data</h3>
-<div id="clientData"></div>
-<button onclick="closeDashboard()">Close</button>
-</div>
-</div>
-
-
-  
 <script>
-window.addEventListener("scroll", function () {
-  let reveals = document.querySelectorAll(".reveal");
+// ── CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 80);
+});
+document.querySelectorAll('a,button,[onclick]').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.8)'; cursor.style.transform = 'translate(-50%,-50%) scale(0.5)'; });
+  el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
+});
 
-  for (let i = 0; i < reveals.length; i++) {
-    let windowHeight = window.innerHeight;
-    let elementTop = reveals[i].getBoundingClientRect().top;
-    let elementVisible = 150;
+// ── EMAIL FLOAT
+window.addEventListener('scroll', () => {
+  const f = document.getElementById('emailFloat');
+  if (window.scrollY > 400) f.classList.add('show');
+  else f.classList.remove('show');
+});
 
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
+// ── REVEAL ON SCROLL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── COUNTER ANIMATION
+function animateCount(el, target, suffix = '+') {
+  let current = 0;
+  const step = Math.ceil(target / 50);
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = current + suffix;
+  }, 40);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(document.getElementById('c1'), 50, '+');
+      animateCount(document.getElementById('c2'), 20, '+');
+      statsObs.disconnect();
     }
-  }
-});
-  
-  const canvas = document.getElementById("logoCanvas");
-const ctx = canvas.getContext("2d");
+  });
+}, { threshold: 0.3 });
+statsObs.observe(document.getElementById('c1'));
 
-canvas.width = 700;
-canvas.height = 250;
-
-const text = "LYZONIX";
-let particles = [];
-
-class Particle {
-constructor(x,y){
-this.x = Math.random()*canvas.width;
-this.y = Math.random()*canvas.height;
-this.targetX = x;
-this.targetY = y;
-this.size = 2;
-this.ease = 0.06;
+// ── FAQ
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
 }
 
-update(){
-this.x += (this.targetX - this.x) * this.ease;
-this.y += (this.targetY - this.y) * this.ease;
+// ── MOBILE MENU
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
 }
 
-draw(){
-ctx.fillStyle = "#ffffff";
-ctx.beginPath();
-ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-ctx.fill();
-}
+// ── SCROLL TO CONTACT
+function scrollToContact() {
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 }
 
-// STEP 1: draw text and capture pixels
-function init(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
+// ── FORM SUBMIT
+async function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const service = document.getElementById('f-service').value;
+  const msg = document.getElementById('f-msg').value.trim();
 
-ctx.font = "bold 90px Arial";
-ctx.fillStyle = "#ffffff";
-ctx.textAlign = "center";
-ctx.fillText(text, canvas.width/2, canvas.height/2 + 30);
-
-const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-
-particles = [];
-
-for(let y=0;y<canvas.height;y+=4){
-for(let x=0;x<canvas.width;x+=4){
-const index = (y*canvas.width + x)*4;
-
-if(imageData.data[index+3] > 128){
-particles.push(new Particle(x,y));
-}
-}
-}
-}
-
-// STEP 2: animate particles into text
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-p.update();
-p.draw();
-});
-
-requestAnimationFrame(animate);
-}
-
-  function toggleMenu(){
-  let dropdown = document.querySelector(".dropdown");
-  let icon = document.getElementById("menuIcon");
-
-  if(dropdown.style.display === "block"){
-      dropdown.style.display = "none";
-      icon.innerHTML = "☰";
-  } else {
-      dropdown.style.display = "block";
-      icon.innerHTML = "✖";
-  }
-  }
-
-
-  
-/* FAQ toggle */
-document.querySelectorAll(".faq").forEach(f=>{
-f.onclick=()=>f.classList.toggle("active");
-});
-
-/* POPUP */
-function openForm(){popup.style.display="flex";}
-function closeForm(){popup.style.display="none";}
-
-/* EMAIL + FIREBASE */
-async function sendEmail(){
-
-let nameVal = document.getElementById("name").value;
-let emailVal = document.getElementById("email").value;
-let messageVal = document.getElementById("message").value;
-
-// 🔴 simple validation
-if(!nameVal || !emailVal || !messageVal){
-  alert("Please fill all fields");
-  return;
-}
-
-// 🟡 button loading text
-document.querySelector(".send").innerText = "Sending...";
-
-// 🟢 1. EMAIL SEND
-try{
-await emailjs.send("service_uqmihet","template_fquvwxg",{
-from_name:nameVal,
-from_email:emailVal,
-message:messageVal
-});
-}catch(err){
-console.log("Email error", err);
-}
-
-// 🔵 2. FIREBASE SAVE
-try{
-await addDoc(collection(db,"clients"),{
-name:nameVal,
-email:emailVal,
-message:messageVal,
-time:new Date().toString()
-});
-}catch(err){
-console.log("Firebase error", err);
-}
-
-// 🟢 SUCCESS UI
-document.querySelector(".popup-box").innerHTML = `
-<h3 style="text-align:center;color:green;">✅ Thank You!</h3>
-<p style="text-align:center;">Your form has been submitted successfully.</p>
-`;
-
-// ⏳ AUTO CLOSE
-setTimeout(()=>{
-popup.style.display="none";
-
-// 🔄 RESET FORM BACK
-document.querySelector(".popup-box").innerHTML = `
-<h3>Contact Lyzonix</h3>
-<input id="name" placeholder="Name">
-<input id="email" placeholder="Email">
-<textarea id="message" placeholder="Message"></textarea>
-<button class="send" onclick="sendEmail()">Send</button>
-<button onclick="closeForm()" style="margin-top:10px;background:red;color:white;border:none;padding:10px;width:100%;border-radius:10px;">Close</button>
-`;
-},2000);
-
-}
-
-/* LOGIN */
-function openLogin(){loginPopup.style.display="flex";}
-function login(){
-if(code.value==="LYZONIX2026"){
-loginPopup.style.display="none";
-dashboard.style.display="flex";
-loadClients();
-}else alert("Wrong Code");
-}
-
-/* DASHBOARD */
-function closeDashboard(){dashboard.style.display="none";}
-
-async function loadClients(){
-let q=await getDocs(collection(db,"clients"));
-let html="";
-q.forEach(doc=>{
-let d=doc.data();
-html+=`<div style="border:1px solid #ccc;margin:10px;padding:10px;border-radius:10px">
-<b>${d.name}</b><br>${d.email}<br>${d.message}<br>${d.time}
-</div>`;
-});
-clientData.innerHTML=html;
-}
-  init();
-animate();
-
-
-async function submitClientForm(){
-
-  const name = document.getElementById("name").value;
-  const service = document.getElementById("service").value;
-  const email = document.getElementById("email").value;
-  const contact = document.getElementById("contact").value;
-  const message = document.getElementById("message").value;
-
-  if(name==="" || service==="" || email===""){
-    alert("Please fill required fields");
+  if (!name || !email || !service) {
+    alert('Please fill in Name, Email, and Service at minimum.');
     return;
   }
 
-  try{
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
 
-    await addDoc(collection(db,"clients"),{
-
-      name:name,
-      service:service,
-      email:email,
-      contact:contact,
-      message:message,
-      time:new Date().toLocaleString()
-
-    });
-
-    alert("Submitted Successfully");
-
-    document.getElementById("name").value="";
-    document.getElementById("service").value="";
-    document.getElementById("email").value="";
-    document.getElementById("contact").value="";
-    document.getElementById("message").value="";
-
-  }
-
-  catch(error){
-
-    console.log(error);
-
-    alert("Error");
-
-  }
-
-}
-  /* EMAIL FLOAT SHOW ON SCROLL */
-
-window.addEventListener("scroll",()=>{
-
-  const emailBtn=document.getElementById("emailFloat");
-
-  if(window.scrollY > 400){
-    emailBtn.classList.add("show");
-  }else{
-    emailBtn.classList.remove("show");
-  }
-
-});
-  
-
-/* COUNTER ANIMATION */
-
-const counters = document.querySelectorAll('.counter');
-
-counters.forEach(counter => {
-
-  counter.innerText = '0';
-
-  const updateCounter = () => {
-
-    const target = +counter.getAttribute('data-target');
-    const count = +counter.innerText;
-
-    const increment = target / 80;
-
-    if(count < target){
-
-      counter.innerText = `${Math.ceil(count + increment)}`;
-
-      setTimeout(updateCounter, 25);
-
-    }else{
-
-      counter.innerText = target + '+';
-
+  try {
+    if (window.db && window.addDoc && window.collection) {
+      await window.addDoc(window.collection(window.db, 'client_requirements'), {
+        name, email, phone, service, message: msg,
+        timestamp: new Date().toISOString()
+      });
     }
-
-  };
-
-  updateCounter();
-
-});
-
-
+    document.getElementById('formSuccess').style.display = 'block';
+    btn.textContent = '✅ Sent!';
+    ['f-name','f-email','f-phone','f-msg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-service').value = '';
+  } catch (err) {
+    btn.textContent = '🚀 Send Your Requirement';
+    btn.disabled = false;
+    alert('Something went wrong. Please email us directly at lyzonixtechnologies@gmail.com');
+  }
+}
 </script>
-
 </body>
 </html>
