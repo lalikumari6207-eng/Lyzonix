@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin Panel — Lyzonix Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e18; --surface:rgba(255,255,255,0.04); --border:rgba(255,255,255,0.09);
+  --gold:#c9a15a; --gold-light:#e6c988; --text:#f3f1ec; --muted:rgba(243,241,236,0.6);
+  --danger:#f87171;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
+
+/* LOGIN GATE */
+#loginGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.login-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px;max-width:360px;width:100%;text-align:center;}
+.login-box h1{font-family:'Fraunces',serif;font-size:22px;margin-bottom:8px;}
+.login-box p{color:var(--muted);font-size:13.5px;margin-bottom:22px;}
+.login-box input{width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;margin-bottom:14px;outline:none;}
+.login-box input:focus{border-color:var(--gold);}
+.login-box button{width:100%;padding:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#0a0e18;border:none;border-radius:10px;font-weight:700;cursor:pointer;}
+.login-error{color:var(--danger);font-size:13px;margin-top:10px;display:none;}
+
+/* DASHBOARD */
+#dashboard{display:none;max-width:1100px;margin:0 auto;padding:30px 5% 80px;}
+.admin-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:30px;}
+.admin-header h1{font-family:'Fraunces',serif;font-size:26px;font-weight:700;}
+.admin-header a{color:var(--muted);text-decoration:none;font-size:13px;}
+.logout-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;}
+
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.tab-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:10px 18px;border-radius:10px;cursor:pointer;font-size:13.5px;font-weight:600;transition:all .25s;}
+.tab-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#0a0e18;border-color:transparent;}
+.tab-count{background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:20px;font-size:11px;margin-left:6px;}
+.tab-btn.active .tab-count{background:rgba(10,14,24,0.2);}
+
+.entry-list{display:flex;flex-direction:column;gap:14px;}
+.entry-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;}
+.entry-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+.entry-name{font-family:'Fraunces',serif;font-size:17px;font-weight:700;}
+.entry-time{color:var(--muted);font-size:12px;}
+.entry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:12px;}
+.entry-field label{display:block;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.entry-field span{font-size:14px;word-break:break-word;}
+.entry-msg{background:rgba(255,255,255,0.03);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.entry-actions{display:flex;gap:8px;}
+.delete-btn{background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:var(--danger);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;}
+.delete-btn:hover{background:rgba(248,113,113,0.2);}
+.status-badge{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.status-new{background:rgba(201,161,90,0.15);color:var(--gold-light);}
+.status-done{background:rgba(79,209,197,0.15);color:#4fd1c5;}
+.empty-state{text-align:center;padding:60px 20px;color:var(--muted);}
+.loading{text-align:center;padding:40px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div id="loginGate">
+  <div class="login-box">
+    <h1>Admin Access</h1>
+    <p>Enter the admin password to view submissions.</p>
+    <input type="password" id="pwInput" placeholder="Password" onkeydown="if(event.key==='Enter')tryLogin()">
+    <button onclick="tryLogin()">Unlock</button>
+    <div class="login-error" id="loginError">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="admin-header">
+    <div><h1>Lyzonix Group — Admin Panel</h1><a href="index.html">← Back to website</a></div>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="group_inquiries" onclick="switchTab('group_inquiries')">General Enquiries <span class="tab-count" id="count-group_inquiries">0</span></button>
+    <button class="tab-btn" data-tab="client_requirements" onclick="switchTab('client_requirements')">Lyzonix IT <span class="tab-count" id="count-client_requirements">0</span></button>
+    <button class="tab-btn" data-tab="lalihomi_orders" onclick="switchTab('lalihomi_orders')">Lali's Homie Orders <span class="tab-count" id="count-lalihomi_orders">0</span></button>
+  </div>
+
+  <div class="entry-list" id="entryList"><div class="loading">Loading...</div></div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBpg4EFwQH3ZkGsX5WcTBcmPxMbYSw3_gQ",
+  authDomain: "lyzonix-bfba9.firebaseapp.com",
+  projectId: "lyzonix-bfba9",
+  storageBucket: "lyzonix-bfba9.firebasestorage.app",
+  messagingSenderId: "141327169537",
+  appId: "1:141327169537:web:bd0f88dda2bf38a92fa800"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const ADMIN_PASSWORD = "lyzonix@admin2026"; // change this to your own password
+let currentTab = 'group_inquiries';
+const cache = {};
+
+window.tryLogin = function () {
+  const val = document.getElementById('pwInput').value;
+  if (val === ADMIN_PASSWORD) {
+    sessionStorage.setItem('lz_admin_ok', '1');
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadTab(currentTab);
+    loadCounts();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+};
+window.logout = function () {
+  sessionStorage.removeItem('lz_admin_ok');
+  location.reload();
+};
+if (sessionStorage.getItem('lz_admin_ok') === '1') {
+  document.getElementById('loginGate').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  loadTab(currentTab);
+  loadCounts();
+}
+
+window.switchTab = function (tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  loadTab(tab);
+};
+
+async function fetchCollection(name) {
+  if (cache[name]) return cache[name];
+  try {
+    const q = query(collection(db, name), orderBy('timestamp', 'desc'));
+    const snap = await getDocs(q);
+    const items = [];
+    snap.forEach(d => items.push({ id: d.id, ...d.data() }));
+    cache[name] = items;
+    return items;
+  } catch (e) {
+    console.error('Fetch error for', name, e);
+    return [];
+  }
+}
+
+async function loadCounts() {
+  for (const name of ['group_inquiries', 'client_requirements', 'lalihomi_orders']) {
+    const items = await fetchCollection(name);
+    document.getElementById('count-' + name).textContent = items.length;
+  }
+}
+
+async function loadTab(tab) {
+  const list = document.getElementById('entryList');
+  list.innerHTML = '<div class="loading">Loading...</div>';
+  const items = await fetchCollection(tab);
+  document.getElementById('count-' + tab).textContent = items.length;
+
+  if (!items.length) {
+    list.innerHTML = '<div class="empty-state">No submissions yet in this section.</div>';
+    return;
+  }
+
+  list.innerHTML = items.map(item => renderEntry(tab, item)).join('');
+}
+
+function esc(s) { return (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function renderEntry(tab, item) {
+  const time = esc(item.submittedAt || item.timestamp || '');
+  const status = item.status === 'done' ? 'done' : 'new';
+  if (tab === 'lalihomi_orders') {
+    return `<div class="entry-card">
+      <div class="entry-top"><div class="entry-name">${esc(item.name)}</div><div class="entry-time">${time}</div></div>
+      <div class="entry-grid">
+        <div class="entry-field"><label>Product</label><span>${esc(item.product)} (${esc(item.price)})</span></div>
+        <div class="entry-field"><label>Quantity</label><span>${esc(item.quantity)}</span></div>
+        <div class="entry-field"><label>Phone</label><span>${esc(item.phone)}</span></div>
+        <div class="entry-field"><label>Status</label><span class="status-badge status-${status}">${status}</span></div>
+      </div>
+      <div class="entry-msg"><strong>Address:</strong> ${esc(item.address)}${item.notes && item.notes !== 'None' ? '<br><strong>Notes:</strong> ' + esc(item.notes) : ''}</div>
+      <div class="entry-actions"><button class="delete-btn" onclick="removeEntry('${tab}','${item.id}')">🗑 Delete</button></div>
+    </div>`;
+  }
+  return `<div class="entry-card">
+    <div class="entry-top"><div class="entry-name">${esc(item.name)}</div><div class="entry-time">${time}</div></div>
+    <div class="entry-grid">
+      <div class="entry-field"><label>Email</label><span>${esc(item.email)}</span></div>
+      <div class="entry-field"><label>Phone</label><span>${esc(item.phone)}</span></div>
+      <div class="entry-field"><label>${tab === 'client_requirements' ? 'Service' : 'Division'}</label><span>${esc(item.service || item.division)}</span></div>
+      <div class="entry-field"><label>Status</label><span class="status-badge status-${status}">${status}</span></div>
+    </div>
+    <div class="entry-msg">${esc(item.message)}</div>
+    <div class="entry-actions"><button class="delete-btn" onclick="removeEntry('${tab}','${item.id}')">🗑 Delete</button></div>
+  </div>`;
+}
+
+window.removeEntry = async function (tab, id) {
+  if (!confirm('Delete this entry? This cannot be undone.')) return;
+  try {
+    await deleteDoc(doc(db, tab, id));
+    cache[tab] = (cache[tab] || []).filter(i => i.id !== id);
+    loadTab(tab);
+  } catch (e) {
+    alert('Could not delete. Please try again.');
+    console.error(e);
+  }
+};
+</script>
+</body>
+</html>
